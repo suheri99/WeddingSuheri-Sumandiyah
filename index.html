@@ -1,0 +1,3192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Sumandiyah & Suheri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #b8941f;
+            --light-gold: #f4e5a1;
+            --soft-gold: #e8d9a0;
+            --cream: #fdfbf5;
+            --white: #ffffff;
+            --ivory: #fefefe;
+            --text-dark: #3a3a3a;
+            --text-soft: #6b6b6b;
+            --shadow-gold: rgba(212, 175, 55, 0.3);
+            --shadow-soft: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+            background: var(--cream);
+            overflow-x: hidden;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        .islamic-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.5' opacity='0.2'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z'/%3E%3Cpath d='M40 20 L60 40 L40 60 L20 40 Z'/%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3C/g%3E%3C/svg%3E");
+            background-color: var(--cream);
+        }
+
+        /* ============ LOADING SCREEN ============ */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--white), var(--cream));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1s, visibility 1s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .bismillah-loader {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .loader-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ============ OPENING GATE ============ */
+        .gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s;
+            overflow: hidden;
+        }
+
+        .gate.opened {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .gate-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at center bottom, rgba(212, 175, 55, 0.1) 0%, transparent 60%),
+                linear-gradient(135deg, #fefefe 0%, #fdfbf5 25%, #faf5e6 50%, #fdfbf5 75%, #fefefe 100%);
+            z-index: 1;
+        }
+
+        .gate-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.5' opacity='0.15'%3E%3Cpath d='M60 0 L120 60 L60 120 L0 60 Z'/%3E%3Cpath d='M60 20 L100 60 L60 100 L20 60 Z'/%3E%3Ccircle cx='60' cy='60' r='15'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3Cpath d='M60 45 L75 60 L60 75 L45 60 Z'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 150px 150px;
+            animation: patternSlowRotate 60s linear infinite;
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        @keyframes patternSlowRotate {
+            from { background-position: 0 0; }
+            to { background-position: 150px 150px; }
+        }
+
+        .gate-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200vmax;
+            height: 200vmax;
+            transform: translate(-50%, -50%);
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(212, 175, 55, 0.06) 5deg,
+                transparent 10deg,
+                transparent 30deg,
+                rgba(212, 175, 55, 0.08) 35deg,
+                transparent 40deg,
+                transparent 80deg,
+                rgba(212, 175, 55, 0.06) 85deg,
+                transparent 90deg,
+                transparent 130deg,
+                rgba(212, 175, 55, 0.08) 135deg,
+                transparent 140deg,
+                transparent 180deg,
+                rgba(212, 175, 55, 0.06) 185deg,
+                transparent 190deg,
+                transparent 230deg,
+                rgba(212, 175, 55, 0.08) 235deg,
+                transparent 240deg,
+                transparent 280deg,
+                rgba(212, 175, 55, 0.06) 285deg,
+                transparent 290deg,
+                transparent 330deg,
+                rgba(212, 175, 55, 0.08) 335deg,
+                transparent 340deg,
+                transparent 360deg
+            );
+            animation: raysRotate 40s linear infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes raysRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .gate-ornament {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInOrnament 2s ease-out forwards;
+        }
+
+        .gate-ornament svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gate-ornament.tl {
+            top: 20px;
+            left: 20px;
+            animation-delay: 0.3s;
+        }
+
+        .gate-ornament.tr {
+            top: 20px;
+            right: 20px;
+            transform: scaleX(-1);
+            animation-delay: 0.5s;
+        }
+
+        .gate-ornament.bl {
+            bottom: 20px;
+            left: 20px;
+            transform: scaleY(-1);
+            animation-delay: 0.7s;
+        }
+
+        .gate-ornament.br {
+            bottom: 20px;
+            right: 20px;
+            transform: scale(-1, -1);
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeInOrnament {
+            from { opacity: 0; transform: translate(20px, 20px) scale(0.8); }
+            to { opacity: 1; transform: translate(0, 0) scale(1); }
+        }
+
+        .gate-ornament.tr { animation-name: fadeInOrnamentTR; }
+        @keyframes fadeInOrnamentTR {
+            from { opacity: 0; transform: scaleX(-1) translate(20px, 20px) scale(0.8); }
+            to { opacity: 1; transform: scaleX(-1) translate(0, 0) scale(1); }
+        }
+
+        .gate-ornament.bl { animation-name: fadeInOrnamentBL; }
+        @keyframes fadeInOrnamentBL {
+            from { opacity: 0; transform: scaleY(-1) translate(20px, 20px) scale(0.8); }
+            to { opacity: 1; transform: scaleY(-1) translate(0, 0) scale(1); }
+        }
+
+        .gate-ornament.br { animation-name: fadeInOrnamentBR; }
+        @keyframes fadeInOrnamentBR {
+            from { opacity: 0; transform: scale(-1, -1) translate(20px, 20px) scale(0.8); }
+            to { opacity: 1; transform: scale(-1, -1) translate(0, 0) scale(1); }
+        }
+
+        .gate-frame {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0;
+            animation: frameExpand 2s ease-out 0.5s forwards;
+        }
+
+        .gate-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 14px;
+        }
+
+        @keyframes frameExpand {
+            from { opacity: 0; transform: scale(0.95); border-color: transparent; }
+            to { opacity: 1; transform: scale(1); border-color: rgba(212, 175, 55, 0.4); }
+        }
+
+        .gate-petal {
+            position: absolute;
+            z-index: 4;
+            pointer-events: none;
+            opacity: 0;
+            font-size: 1.2rem;
+            color: var(--gold);
+            animation: petalFloat 12s linear infinite;
+        }
+
+        @keyframes petalFloat {
+            0% { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.5); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { opacity: 0; transform: translateY(-10vh) rotate(720deg) scale(1.2); }
+        }
+
+        .gate-sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(212, 175, 55, 0.6);
+            animation: sparkle 3s ease-in-out infinite;
+            z-index: 4;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .gate-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            transition: opacity 0.6s;
+            padding: 40px 20px;
+            max-width: 90%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gate.opened .gate-content {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        .gate-bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: 
+                fadeInDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards,
+                shimmerText 4s ease-in-out infinite 1.5s;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2);
+            position: relative;
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @keyframes shimmerText {
+            0%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2); }
+            50% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.4), 0 0 80px rgba(212, 175, 55, 0.2); }
+        }
+
+        .gate-ornament-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        .gate-ornament-line .line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .gate-ornament-line .flower {
+            color: var(--gold);
+            font-size: 1rem;
+            animation: rotateFlower 8s linear infinite;
+        }
+
+        @keyframes rotateFlower {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gate-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            position: relative;
+            opacity: 0;
+            animation: titleReveal 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
+        }
+
+        @keyframes titleReveal {
+            from { opacity: 0; transform: scale(0.7) translateY(30px); filter: blur(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        .gate-title .name {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5a1 25%, #b8941f 50%, #f4e5a1 75%, #d4af37 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.4));
+            animation: goldShimmer 4s linear infinite;
+        }
+
+        @keyframes goldShimmer {
+            to { background-position: 200% center; }
+        }
+
+        .gate-title .amp {
+            display: inline-block;
+            font-family: 'Great Vibes', cursive;
+            color: var(--soft-gold);
+            font-size: 3rem;
+            margin: 0 15px;
+            vertical-align: middle;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+        }
+
+        .gate-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.3s forwards;
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .gate-subtitle::before,
+        .gate-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .gate-subtitle::before { left: 0; }
+        .gate-subtitle::after { right: 0; }
+
+        .gate-guest {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(253, 251, 245, 0.95), rgba(255, 255, 255, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 20px;
+            padding: 25px 40px;
+            margin-bottom: 35px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            opacity: 0;
+            animation: guestReveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s forwards;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.2) inset, 0 0 60px rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes guestReveal {
+            from { opacity: 0; transform: translateY(40px) scale(0.9); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        .gate-guest::before {
+            content: '❁';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #fefefe, #fdfbf5);
+            color: var(--gold);
+            padding: 0 15px;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            animation: rotateFlower 6s linear infinite;
+        }
+
+        .gate-guest::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .gate-guest-label {
+            font-size: 0.75rem;
+            color: var(--text-soft);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            opacity: 0.8;
+        }
+
+        .gate-guest-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            line-height: 1.3;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5a1 30%, #b8941f 60%, #f4e5a1 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            word-break: break-word;
+            animation: goldShimmer 3s linear infinite;
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+        }
+
+        .open-btn {
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #ffffff, #fdfbf5);
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+            opacity: 0;
+            animation: 
+                btnReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) 2s forwards,
+                btnPulse 2s ease-in-out infinite 3s;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2), 0 0 0 0 rgba(212, 175, 55, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1;
+        }
+
+        @keyframes btnReveal {
+            from { opacity: 0; transform: translateY(30px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes btnPulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2), 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 5px 30px rgba(212, 175, 55, 0.4), 0 0 0 15px rgba(212, 175, 55, 0); }
+        }
+
+        .open-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .open-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shine 3s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(25deg); }
+            50%, 100% { transform: translateX(200%) rotate(25deg); }
+        }
+
+        .open-btn:hover::before {
+            left: 0;
+        }
+
+        .open-btn:hover {
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.3);
+            letter-spacing: 5px;
+        }
+
+        .open-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.5s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .open-btn:hover i {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .open-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gate-footer {
+            margin-top: 30px;
+            font-family: 'Amiri', serif;
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.5s forwards;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* ============ EFEK LEDAKAN ============ */
+        .light-burst {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(244, 229, 161, 0.9) 20%, rgba(212, 175, 55, 0.6) 40%, rgba(212, 175, 55, 0.2) 60%, transparent 80%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9998;
+            filter: blur(20px);
+        }
+
+        .light-burst.active {
+            animation: burstExpand 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes burstExpand {
+            0% { width: 0; height: 0; opacity: 0; }
+            20% { opacity: 1; }
+            100% { width: 300vmax; height: 300vmax; opacity: 0; }
+        }
+
+        .shimmer-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9997;
+            background: linear-gradient(135deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%, transparent 100%);
+            background-size: 250% 250%;
+        }
+
+        .shimmer-screen.active {
+            animation: shimmerFull 2.5s ease-in-out 0.3s;
+        }
+
+        @keyframes shimmerFull {
+            0% { opacity: 0; background-position: 200% 200%; }
+            30% { opacity: 1; }
+            100% { opacity: 0; background-position: -100% -100%; }
+        }
+
+        .confetti-flower {
+            position: fixed;
+            top: -50px;
+            z-index: 9996;
+            pointer-events: none;
+            opacity: 0;
+            font-size: 1.5rem;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { opacity: 0; transform: translateY(-50px) rotate(0deg) scale(0.5); }
+            10% { opacity: 1; transform: translateY(0) rotate(45deg) scale(1); }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(1.2); }
+        }
+
+        .cover-reveal {
+            animation: coverZoom 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes coverZoom {
+            0% { transform: scale(1.15); filter: blur(15px) brightness(1.5); opacity: 0; }
+            50% { filter: blur(5px) brightness(1.2); }
+            100% { transform: scale(1); filter: blur(0) brightness(1); opacity: 1; }
+        }
+
+        .golden-ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: 4px solid var(--gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9995;
+            box-shadow: 0 0 40px var(--gold), 0 0 80px rgba(212, 175, 55, 0.6), inset 0 0 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .golden-ring.active {
+            animation: ringExpand 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes ringExpand {
+            0% { width: 0; height: 0; opacity: 0; border-width: 8px; }
+            20% { opacity: 1; }
+            100% { width: 300vmax; height: 300vmax; opacity: 0; border-width: 1px; }
+        }
+
+        .flash-white {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .flash-white.active {
+            animation: flashAnim 1.2s ease-out;
+        }
+
+        @keyframes flashAnim {
+            0% { opacity: 0; }
+            15% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .gate-bismillah { font-size: 1.8rem; }
+            .gate-title { font-size: 3rem; }
+            .gate-title .amp { font-size: 2.2rem; margin: 0 10px; }
+            .gate-subtitle { font-size: 0.75rem; letter-spacing: 5px; }
+            .gate-guest { padding: 20px 25px; max-width: 90%; }
+            .gate-guest-name { font-size: 1.7rem; }
+            .gate-ornament { width: 90px; height: 90px; }
+            .gate-ornament.tl, .gate-ornament.tr { top: 10px; }
+            .gate-ornament.tl, .gate-ornament.bl { left: 10px; }
+            .gate-ornament.tr, .gate-ornament.br { right: 10px; }
+            .gate-ornament.bl, .gate-ornament.br { bottom: 10px; }
+            .gate-frame { top: 15px; left: 15px; right: 15px; bottom: 15px; }
+            .open-btn { padding: 15px 35px; font-size: 0.95rem; letter-spacing: 3px; }
+        }
+
+        @media (max-width: 480px) {
+            .gate-bismillah { font-size: 1.4rem; }
+            .gate-title { font-size: 2.3rem; }
+            .gate-title .amp { font-size: 1.6rem; }
+            .gate-subtitle { font-size: 0.65rem; letter-spacing: 4px; padding: 0 30px; }
+            .gate-subtitle::before, .gate-subtitle::after { width: 15px; }
+            .gate-guest { padding: 18px 20px; }
+            .gate-guest-label { font-size: 0.65rem; letter-spacing: 3px; }
+            .gate-guest-name { font-size: 1.4rem; }
+            .gate-ornament { width: 70px; height: 70px; }
+            .open-btn { padding: 14px 28px; font-size: 0.85rem; letter-spacing: 2px; }
+            .open-btn i { font-size: 1rem; }
+        }
+
+        /* ============ MAIN CONTENT ============ */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s 0.5s;
+        }
+
+        .main-content.visible {
+            opacity: 1;
+        }
+
+        /* ============ COVER SECTION ============ */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 60px 20px 100px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 50%, var(--white) 100%);
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.3' opacity='0.15'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z'/%3E%3Cpath d='M50 25 L75 50 L50 75 L25 50 Z'/%3E%3Ccircle cx='50' cy='50' r='8'/%3E%3C/g%3E%3C/svg%3E");
+            animation: patternMove 30s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .cover::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ornament-top {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cover-salam {
+            font-family: 'Amiri', serif;
+            font-size: 1.7rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 15px rgba(212, 175, 55, 0.3);
+            direction: rtl;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 100%;
+            word-wrap: break-word;
+        }
+
+        .cover-salam-translate {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            font-style: italic;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+        }
+
+        .cover-label {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cover-guest {
+            padding: 20px 35px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.03));
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 15px;
+            position: relative;
+            max-width: 550px;
+            width: 100%;
+            margin-bottom: 30px;
+            animation: guestGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes guestGlow {
+            from { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+            to { box-shadow: 0 0 35px rgba(212, 175, 55, 0.35); }
+        }
+
+        .cover-guest::before {
+            content: '❁';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cream);
+            color: var(--gold);
+            padding: 0 10px;
+            font-size: 1rem;
+        }
+
+        .cover-guest-label {
+            font-size: 0.7rem;
+            color: var(--text-soft);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cover-guest-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.4rem;
+            color: var(--gold);
+            line-height: 1.3;
+            word-break: break-word;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cover-guest-address {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            margin-top: 8px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .couple-photo-frame {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            margin: 0 auto 30px;
+            padding: 12px;
+            background: var(--white);
+            border-radius: 200px 200px 20px 20px;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.3);
+            transition: all 0.5s;
+            animation: photoFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .couple-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 2px solid var(--gold);
+            border-radius: 210px 210px 25px 25px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .couple-photo-frame::after {
+            content: '❁';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--gold);
+            background: var(--cream);
+            padding: 0 10px;
+        }
+
+        .couple-photo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 190px 190px 15px 15px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--cream), var(--soft-gold));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .couple-photo-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .photo-locked {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fdfbf5, #f4e5a1);
+        }
+
+        .photo-locked i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            opacity: 0.6;
+        }
+
+        .photo-locked span {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--text-soft);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .frame-decoration {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        .frame-decoration.top-left { top: -15px; left: -15px; transform: rotate(-45deg); }
+        .frame-decoration.top-right { top: -15px; right: -15px; transform: rotate(45deg); }
+        .frame-decoration.bottom-left { bottom: -15px; left: -15px; transform: rotate(-135deg); }
+        .frame-decoration.bottom-right { bottom: -15px; right: -15px; transform: rotate(135deg); }
+
+        .couple-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--gold);
+            line-height: 1.2;
+            margin: 5px 0;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--soft-gold);
+            display: block;
+            margin: 5px 0;
+        }
+
+        .cover-date {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            letter-spacing: 3px;
+            padding: 12px 30px;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* ============ HOME LOGO ============ */
+        .home-logo {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 20px var(--shadow-gold);
+            transition: all 0.4s;
+            opacity: 0;
+            transform: scale(0);
+            border: 3px solid var(--white);
+        }
+
+        .home-logo.visible { opacity: 1; transform: scale(1); }
+        .home-logo:hover { transform: scale(1.1) rotate(360deg); box-shadow: 0 8px 30px var(--shadow-gold); }
+
+        /* ============ NAVIGATION ICONS ============ */
+        .nav-icons {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 22px;
+            border-radius: 50px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.25);
+            opacity: 0;
+            transition: all 0.5s;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-icons.visible { opacity: 1; }
+
+        .nav-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-icon:hover, .nav-icon.active {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--shadow-gold);
+        }
+
+        .nav-icon .tooltip {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        .nav-icon .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px 5px 0;
+            border-style: solid;
+            border-color: var(--gold) transparent transparent;
+        }
+
+        .nav-icon:hover .tooltip { opacity: 1; }
+
+        /* ============ SECTIONS ============ */
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--cream);
+        }
+
+        section:nth-child(even) { background: var(--white); }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .section-subtitle {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            text-align: center;
+            margin-bottom: 40px;
+            font-style: italic;
+            max-width: 700px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 50px;
+        }
+
+        .divider-line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .divider-icon { color: var(--gold); font-size: 1.2rem; }
+
+        /* ============ PROFILE SECTION ============ */
+        .profile-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 45px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 380px;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow-soft);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--light-gold), var(--gold));
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            border-color: var(--gold);
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            border: 3px solid var(--gold);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: var(--gold);
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.1), 0 10px 30px var(--shadow-gold);
+            overflow: hidden;
+        }
+
+        .profile-photo img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+
+        .profile-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-desc {
+            color: var(--text-soft);
+            font-size: 1rem;
+            line-height: 1.9;
+            position: relative;
+            z-index: 1;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .profile-desc strong { color: var(--text-dark); font-weight: 600; }
+
+        .love-icon {
+            font-size: 3rem;
+            color: #e74c3c;
+            display: flex;
+            align-items: center;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(231, 76, 60, 0.4));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ============ EVENT SECTION ============ */
+        .event-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .event-card {
+            background: var(--white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 45px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow-soft);
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--light-gold), var(--gold));
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            border-color: var(--gold);
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .event-detail {
+            color: var(--text-soft);
+            font-size: 1rem;
+            line-height: 2;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .event-detail i { color: var(--gold); margin-right: 10px; width: 20px; }
+
+        .event-date {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin: 15px 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .event-time {
+            font-size: 1.05rem;
+            color: var(--gold);
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .event-location {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--white);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        .map-btn:hover {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-gold);
+        }
+
+        /* ============ GALLERY SECTION ============ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s;
+            background: linear-gradient(135deg, var(--white), var(--cream));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            box-shadow: 0 10px 30px var(--shadow-soft);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .gallery-item i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            transition: transform 0.5s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-item:hover i { transform: scale(1.2) rotate(10deg); }
+
+        .gallery-item span {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ DONATION SECTION ============ */
+        .donation-section {
+            background: linear-gradient(135deg, #f8f4e8 0%, #fdfbf5 50%, #f8f4e8 100%);
+        }
+
+        .donation-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* ============ ATM CARD STYLES ============ */
+        .atm-card-wrapper {
+            perspective: 1500px;
+            width: 100%;
+            max-width: 400px;
+            min-width: 300px;
+        }
+
+        .atm-card {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1.586 / 1;
+            border-radius: 18px;
+            padding: 22px 25px;
+            color: white;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: rotateY(0deg) rotateX(0deg);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.25),
+                0 10px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            overflow: hidden;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* ===== KARTU BRI - Warna Biru Khas BRI ===== */
+        .atm-card.bri {
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(0, 87, 184, 0.5) 0%, transparent 50%),
+                linear-gradient(135deg, #0057b8 0%, #003f8a 40%, #002f66 100%);
+        }
+
+        .atm-card.bri::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .atm-card.bri::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        /* ===== KARTU BNI - Warna Merah Oranye Khas BNI ===== */
+        .atm-card.bni {
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(255, 100, 0, 0.4) 0%, transparent 50%),
+                linear-gradient(135deg, #f15a22 0%, #d44616 40%, #a03010 100%);
+        }
+
+        .atm-card.bni::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .atm-card.bni::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(255, 200, 100, 0.1) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        /* Hover efek 3D */
+        .atm-card:hover {
+            transform: rotateY(-5deg) rotateX(5deg) scale(1.03);
+            box-shadow: 
+                0 30px 70px rgba(0, 0, 0, 0.35),
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .atm-card.bri:hover {
+            box-shadow: 
+                0 30px 70px rgba(0, 0, 0, 0.35),
+                0 15px 30px rgba(0, 87, 184, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .atm-card.bni:hover {
+            box-shadow: 
+                0 30px 70px rgba(0, 0, 0, 0.35),
+                0 15px 30px rgba(241, 90, 34, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Header kartu - Logo Bank */
+        .atm-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Logo Bank */
+        .bank-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .bank-logo-text {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1;
+        }
+
+        .bank-logo-tagline {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* Logo jaringan pembayaran */
+        .card-network {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .card-network-logo {
+            width: 50px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Chip EMV */
+        .card-chip {
+            position: absolute;
+            top: 50px;
+            left: 25px;
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(135deg, #f4d97e 0%, #d4af37 50%, #b8941f 100%);
+            border-radius: 6px;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .card-chip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .card-chip::after {
+            content: '';
+            position: absolute;
+            top: 33%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        /* Nomor kartu */
+        .atm-card-number {
+            position: absolute;
+            top: 100px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            gap: 12px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.05rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .atm-card-number .group {
+            display: flex;
+            gap: 2px;
+        }
+
+        /* Bagian bawah kartu - Nama & Expiry */
+        .atm-card-footer {
+            position: absolute;
+            bottom: 22px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 2;
+        }
+
+        .card-holder {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .card-holder-label {
+            font-size: 0.55rem;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 1.5px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .card-holder-name {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: white;
+            letter-spacing: 1.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        .card-expiry {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-end;
+        }
+
+        .card-expiry-label {
+            font-size: 0.55rem;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 1.5px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .card-expiry-date {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: white;
+            letter-spacing: 1.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Logo jaringan di kanan bawah */
+        .card-network-bottom {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            z-index: 3;
+        }
+
+        .card-network-bottom svg {
+            width: 55px;
+            height: auto;
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Efek glossy/highlight di atas kartu */
+        .atm-card-gloss {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                transparent 30%,
+                transparent 70%,
+                rgba(255, 255, 255, 0.05) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 18px;
+        }
+
+        /* Tombol Salin di bawah kartu */
+        .copy-card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 
+                0 8px 20px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .copy-card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 12px 30px rgba(212, 175, 55, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .copy-card-btn.copied {
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+        }
+
+        .copy-card-btn i {
+            font-size: 1rem;
+        }
+
+        /* Info tambahan di bawah tombol */
+        .card-info {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ============ WISHES SECTION ============ */
+        .wishes-container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .wish-form {
+            background: var(--white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px var(--shadow-soft);
+        }
+
+        .wish-form h3 {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--cream);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            color: var(--text-dark);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background: var(--white);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: #aaa; }
+
+        .form-group textarea { min-height: 120px; resize: vertical; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 20px var(--shadow-gold);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px var(--shadow-gold);
+        }
+
+        .wishes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .wishes-list::-webkit-scrollbar { width: 5px; }
+        .wishes-list::-webkit-scrollbar-track { background: rgba(212, 175, 55, 0.1); border-radius: 10px; }
+        .wishes-list::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+        .wish-item {
+            background: var(--white);
+            border-left: 4px solid var(--gold);
+            border-radius: 10px;
+            padding: 20px;
+            animation: slideIn 0.5s ease-out;
+            box-shadow: 0 5px 20px var(--shadow-soft);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .wish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .wish-name {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .wish-time { color: #aaa; font-size: 0.8rem; }
+
+        .wish-message {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ============ CLOSING SECTION ============ */
+        .closing-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.3' opacity='0.15'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z'/%3E%3Ccircle cx='50' cy='50' r='15'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .closing-section::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        .closing-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .closing-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            line-height: 2;
+            direction: rtl;
+        }
+
+        .closing-text {
+            color: var(--text-soft);
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 30px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .closing-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--gold);
+            margin: 30px 0;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .closing-thanks {
+            color: var(--text-soft);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .closing-ornament {
+            color: var(--gold);
+            font-size: 2rem;
+            margin: 30px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* ============ MUSIC CONTROL ============ */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0);
+            box-shadow: 0 5px 20px var(--shadow-gold);
+            backdrop-filter: blur(10px);
+        }
+
+        .music-control.visible { opacity: 1; transform: scale(1); }
+
+        .music-control:hover {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .music-control.playing i { animation: musicPulse 1s infinite; }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ============ SCROLL ANIMATIONS ============ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .couple-name { font-size: 3rem; }
+            .cover-salam { font-size: 1.3rem; line-height: 1.8; }
+            .cover-salam-translate { font-size: 0.85rem; }
+            .section-title { font-size: 2.4rem; }
+            .closing-names { font-size: 2.8rem; }
+            .nav-icons { padding: 10px 15px; gap: 6px; bottom: 20px; }
+            .nav-icon { width: 40px; height: 40px; font-size: 0.95rem; }
+            .home-logo { width: 50px; height: 50px; font-size: 1.2rem; bottom: 20px; left: 15px; }
+            .profile-cards { flex-direction: column; align-items: center; }
+            .love-icon { transform: rotate(90deg); }
+            .closing-arabic { font-size: 1.3rem; }
+            .couple-photo-frame { width: 260px; height: 330px; }
+            .cover-guest-name { font-size: 1.9rem; }
+            .cover-guest { padding: 18px 25px; }
+            .atm-card-wrapper { max-width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .couple-name { font-size: 2.4rem; }
+            .cover-salam { font-size: 1.05rem; line-height: 1.8; }
+            .cover-salam-translate { font-size: 0.75rem; }
+            .section-title { font-size: 2rem; }
+            .closing-names { font-size: 2.2rem; }
+            .nav-icons { gap: 4px; padding: 8px 10px; }
+            .nav-icon { width: 36px; height: 36px; font-size: 0.85rem; }
+            .couple-photo-frame { width: 220px; height: 280px; padding: 8px; }
+            .cover-guest-name { font-size: 1.7rem; }
+            .cover-guest { padding: 15px 20px; margin-bottom: 25px; }
+            
+            .atm-card { padding: 16px 18px; border-radius: 14px; }
+            .bank-logo-text { font-size: 1.4rem; letter-spacing: 2px; }
+            .bank-logo-tagline { font-size: 0.5rem; }
+            .card-chip { width: 38px; height: 28px; top: 40px; left: 18px; }
+            .atm-card-number { 
+                top: 82px; 
+                left: 18px; 
+                right: 18px; 
+                font-size: 0.85rem; 
+                gap: 8px; 
+            }
+            .atm-card-footer { bottom: 16px; left: 18px; right: 18px; }
+            .card-holder-name { font-size: 0.7rem; max-width: 130px; }
+            .card-expiry-date { font-size: 0.7rem; }
+            .card-holder-label,
+            .card-expiry-label { font-size: 0.5rem; }
+            .card-network-bottom svg { width: 45px; }
+            .card-network-logo { width: 40px; }
+        }
+
+        /* ============ FLOATING PARTICLES ============ */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            animation: particleFloat 15s infinite;
+            color: var(--gold);
+        }
+
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { opacity: 0; transform: translateY(-100vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ LOADING SCREEN ============ -->
+    <div class="loader" id="loader">
+        <div class="bismillah-loader">﷽</div>
+        <div class="loader-ring"></div>
+    </div>
+
+    <!-- ============ EFEK LEDAKAN PEMBUKAAN ============ -->
+    <div class="light-burst" id="lightBurst"></div>
+    <div class="golden-ring" id="goldenRing"></div>
+    <div class="shimmer-screen" id="shimmerScreen"></div>
+    <div class="flash-white" id="flashWhite"></div>
+
+    <!-- ============ OPENING GATE ============ -->
+    <div class="gate" id="gate">
+        <div class="gate-bg"></div>
+        <div class="gate-pattern"></div>
+        <div class="gate-rays"></div>
+        <div class="gate-frame"></div>
+
+        <div class="gate-ornament tl">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="0.8">
+                <path d="M5 5 Q30 5 30 30 Q30 5 55 5 Q30 5 30 30" opacity="0.7"/>
+                <path d="M5 5 Q5 30 30 30 Q5 30 5 55 Q5 30 30 30" opacity="0.7"/>
+                <circle cx="30" cy="30" r="3" fill="#d4af37" opacity="0.6"/>
+            </svg>
+        </div>
+        <div class="gate-ornament tr">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="0.8">
+                <path d="M5 5 Q30 5 30 30 Q30 5 55 5 Q30 5 30 30" opacity="0.7"/>
+                <path d="M5 5 Q5 30 30 30 Q5 30 5 55 Q5 30 30 30" opacity="0.7"/>
+                <circle cx="30" cy="30" r="3" fill="#d4af37" opacity="0.6"/>
+            </svg>
+        </div>
+        <div class="gate-ornament bl">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="0.8">
+                <path d="M5 5 Q30 5 30 30 Q30 5 55 5 Q30 5 30 30" opacity="0.7"/>
+                <path d="M5 5 Q5 30 30 30 Q5 30 5 55 Q5 30 30 30" opacity="0.7"/>
+                <circle cx="30" cy="30" r="3" fill="#d4af37" opacity="0.6"/>
+            </svg>
+        </div>
+        <div class="gate-ornament br">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="0.8">
+                <path d="M5 5 Q30 5 30 30 Q30 5 55 5 Q30 5 30 30" opacity="0.7"/>
+                <path d="M5 5 Q5 30 30 30 Q5 30 5 55 Q5 30 30 30" opacity="0.7"/>
+                <circle cx="30" cy="30" r="3" fill="#d4af37" opacity="0.6"/>
+            </svg>
+        </div>
+
+        <div class="gate-content">
+            <div class="gate-bismillah">﷽</div>
+            <div class="gate-ornament-line">
+                <div class="line"></div>
+                <div class="flower">❁</div>
+                <div class="line"></div>
+            </div>
+            <div class="gate-title">
+                <span class="name">Sumandiyah</span>
+                <span class="amp">&</span>
+                <span class="name">Suheri</span>
+            </div>
+            <div class="gate-subtitle">Undangan Pernikahan</div>
+            <div class="gate-guest">
+                <div class="gate-guest-label">Kepada Bapak/Ibu/Saudara/i</div>
+                <div class="gate-guest-name" id="gateGuestName">Tamu Undangan</div>
+            </div>
+            <button class="open-btn" id="openBtn">
+                <i class="fas fa-envelope-open"></i>
+                <span>BUKA UNDANGAN</span>
+            </button>
+            <div class="gate-footer">
+                ✦ Dengan memohon rahmat & ridho Allah SWT ✦
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <div class="main-content" id="mainContent">
+
+        <div class="music-control" id="musicControl" onclick="toggleMusic()">
+            <i class="fas fa-music"></i>
+        </div>
+
+        <div class="home-logo" id="homeLogo" onclick="scrollToTop()">
+            <i class="fas fa-home"></i>
+        </div>
+
+        <div class="nav-icons" id="navIcons">
+            <div class="nav-icon" onclick="scrollToSection('cover')" data-section="cover">
+                <i class="fas fa-home"></i>
+                <span class="tooltip">Beranda</span>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('profile')" data-section="profile">
+                <i class="fas fa-user"></i>
+                <span class="tooltip">Mempelai</span>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('event')" data-section="event">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="tooltip">Acara</span>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('gallery')" data-section="gallery">
+                <i class="fas fa-images"></i>
+                <span class="tooltip">Galeri</span>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('donation')" data-section="donation">
+                <i class="fas fa-gift"></i>
+                <span class="tooltip">Hadiah</span>
+            </div>
+            <div class="nav-icon" onclick="scrollToSection('wishes')" data-section="wishes">
+                <i class="fas fa-comments"></i>
+                <span class="tooltip">Ucapan</span>
+            </div>
+        </div>
+
+        <!-- ============ COVER SECTION ============ -->
+        <section class="cover" id="cover">
+            <div class="cover-content" id="coverContent">
+                <div class="ornament-top">❁ ✦ ❁</div>
+                <div class="cover-salam">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</div>
+                <div class="cover-salam-translate">Assalamu'alaikum Warahmatullahi Wabarakatuh</div>
+                <div class="cover-label">Undangan Pernikahan</div>
+
+                <div class="cover-guest">
+                    <div class="cover-guest-label">Kepada Bapak/Ibu/Saudara/i</div>
+                    <div class="cover-guest-name" id="coverGuestName">Tamu Undangan</div>
+                    <div class="cover-guest-address" id="coverGuestAddress"></div>
+                </div>
+
+                <div class="couple-photo-frame">
+                    <span class="frame-decoration top-left">❁</span>
+                    <span class="frame-decoration top-right">❁</span>
+                    <span class="frame-decoration bottom-left">❁</span>
+                    <span class="frame-decoration bottom-right">❁</span>
+                    
+                    <div class="couple-photo-inner">
+                        <img src="IMG-20260718-WA0019.jpg" 
+                             alt="Sumandiyah & Suheri" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        
+                        <div class="photo-locked" style="display: none;">
+                            <i class="fas fa-heart"></i>
+                            <span>SUMANDIYAH & SUHERI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="couple-name">Sumandiyah</div>
+                <span class="ampersand">&</span>
+                <div class="couple-name">Suheri</div>
+                <div class="cover-date">
+                    <i class="fas fa-calendar-alt"></i> Sabtu, 15 Maret 2025
+                </div>
+            </div>
+            <div class="scroll-indicator" onclick="scrollToSection('profile')">
+                <i class="fas fa-chevron-down fa-2x"></i>
+            </div>
+        </section>
+
+        <!-- ============ PROFILE SECTION ============ -->
+        <section class="profile-section islamic-pattern" id="profile">
+            <h2 class="section-title fade-in">Mempelai</h2>
+            <p class="section-subtitle fade-in">﴾ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴿</p>
+            <div class="divider fade-in">
+                <div class="divider-line"></div>
+                <i class="fas fa-star divider-icon"></i>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="profile-cards">
+                <div class="profile-card fade-in-left">
+                    <div class="profile-photo">
+                        <img src="images/foto-sumandiyah.jpg" 
+                             alt="Sumandiyah"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-user" style="display: none;"></i>
+                    </div>
+                    <h3 class="profile-name">Sumandiyah</h3>
+                    <p class="profile-desc">
+                        Putri dari<br>
+                        <strong>Bapak Ahmad</strong> & <strong>Ibu Siti</strong><br>
+                        <em>"Semoga Allah memberkahi pernikahan ini"</em>
+                    </p>
+                </div>
+
+                <div class="love-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+
+                <div class="profile-card fade-in-right">
+                    <div class="profile-photo">
+                        <img src="images/foto-suheri.jpg" 
+                             alt="Suheri"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-user" style="display: none;"></i>
+                    </div>
+                    <h3 class="profile-name">Suheri</h3>
+                    <p class="profile-desc">
+                        Putra dari<br>
+                        <strong>Bapak Haji</strong> & <strong>Ibu Hajjah</strong><br>
+                        <em>"Semoga Allah memberkahi pernikahan ini"</em>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EVENT SECTION ============ -->
+        <section class="event-section islamic-pattern" id="event">
+            <h2 class="section-title fade-in">Waktu & Tempat</h2>
+            <p class="section-subtitle fade-in">Insya Allah akan dilaksanakan pada:</p>
+            <div class="divider fade-in">
+                <div class="divider-line"></div>
+                <i class="fas fa-mosque divider-icon"></i>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="event-cards">
+                <div class="event-card fade-in-left">
+                    <div class="event-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 class="event-title">Akad Nikah</h3>
+                    <div class="event-detail">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i> Sabtu, 15 Maret 2025
+                        </div>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i> 08.00 - 10.00 WIB
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i><br>
+                            Masjid Al-Ikhlas<br>
+                            Jl. Raya Utama No. 123, Jakarta
+                        </div>
+                        <a href="#" class="map-btn" onclick="alert('Buka Google Maps')">
+                            <i class="fas fa-map"></i> Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in-right">
+                    <div class="event-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="event-title">Resepsi</h3>
+                    <div class="event-detail">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i> Sabtu, 15 Maret 2025
+                        </div>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i> 11.00 - 14.00 WIB
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i><br>
+                            Gedung Serbaguna Al-Barokah<br>
+                            Jl. Raya Utama No. 125, Jakarta
+                        </div>
+                        <a href="#" class="map-btn" onclick="alert('Buka Google Maps')">
+                            <i class="fas fa-map"></i> Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALLERY SECTION ============ -->
+        <section class="gallery-section islamic-pattern" id="gallery">
+            <h2 class="section-title fade-in">Galeri</h2>
+            <p class="section-subtitle fade-in">Momen indah kami</p>
+            <div class="divider fade-in">
+                <div class="divider-line"></div>
+                <i class="fas fa-camera divider-icon"></i>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in" onclick="openGallery(1)">
+                    <img src="images/galeri1.jpg" alt="Galeri 1" onerror="this.style.display='none';">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="gallery-item fade-in" onclick="openGallery(2)">
+                    <img src="images/galeri2.jpg" alt="Galeri 2" onerror="this.style.display='none';">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="gallery-item fade-in" onclick="openGallery(3)">
+                    <img src="images/galeri3.jpg" alt="Galeri 3" onerror="this.style.display='none';">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="gallery-item fade-in" onclick="openGallery(4)">
+                    <img src="images/galeri4.jpg" alt="Galeri 4" onerror="this.style.display='none';">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="gallery-item fade-in" onclick="openGallery(5)">
+                    <img src="images/galeri5.jpg" alt="Galeri 5" onerror="this.style.display='none';">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="gallery-item fade-in" onclick="openGallery(6)">
+                    <img src="images/galeri6.jpg" alt="Galeri 6" onerror="this.style.display='none';">
+                    <i class="fas fa-image"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DONATION SECTION - KARTU ATM BRI & BNI ============ -->
+        <section class="donation-section islamic-pattern" id="donation">
+            <h2 class="section-title fade-in">Hadiah & Sumbangan</h2>
+            <p class="section-subtitle fade-in">Doa restu Anda adalah hadiah terindah bagi kami</p>
+            <div class="divider fade-in">
+                <div class="divider-line"></div>
+                <i class="fas fa-gift divider-icon"></i>
+                <div class="divider-line"></div>
+            </div>
+
+            <p class="fade-in" style="color: var(--text-soft); margin-bottom: 30px; font-size: 1.05rem; line-height: 1.8; text-align: center; max-width: 600px;">
+                Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih, dapat mengirimkan melalui:
+            </p>
+
+            <div class="donation-container">
+
+                <!-- ================= KARTU ATM 1 - BANK BRI (SUMANDIYAH) ================= -->
+                <div class="atm-card-wrapper fade-in-left">
+                    <div class="atm-card bri">
+                        <div class="atm-card-gloss"></div>
+                        
+                        <!-- Chip EMV -->
+                        <div class="card-chip"></div>
+                        
+                        <!-- Header - Logo Bank -->
+                        <div class="atm-card-header">
+                            <div class="bank-logo">
+                                <div class="bank-logo-text">BRI</div>
+                                <div class="bank-logo-tagline">Bank Rakyat Indonesia</div>
+                            </div>
+                            <div class="card-network">
+                                <svg class="card-network-logo" viewBox="0 0 50 30" fill="white">
+                                    <circle cx="15" cy="15" r="12" fill="#EB001B" opacity="0.9"/>
+                                    <circle cx="35" cy="15" r="12" fill="#F79E1B" opacity="0.9"/>
+                                    <path d="M 25 5 A 12 12 0 0 1 25 25 A 12 12 0 0 1 25 5 Z" fill="#FF5F00"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Nomor Kartu -->
+                        <div class="atm-card-number">
+                            <span class="group">
+                                <span>5</span><span>2</span><span>3</span><span>4</span>
+                            </span>
+                            <span class="group">
+                                <span>5</span><span>6</span><span>7</span><span>8</span>
+                            </span>
+                            <span class="group">
+                                <span>9</span><span>0</span><span>1</span><span>2</span>
+                            </span>
+                            <span class="group">
+                                <span>3</span><span>4</span><span>5</span><span>6</span>
+                            </span>
+                        </div>
+
+                        <!-- Footer - Nama & Expiry -->
+                        <div class="atm-card-footer">
+                            <div class="card-holder">
+                                <div class="card-holder-label">CARD HOLDER</div>
+                                <div class="card-holder-name">SUMANDIYAH</div>
+                            </div>
+                            <div class="card-expiry">
+                                <div class="card-expiry-label">VALID THRU</div>
+                                <div class="card-expiry-date">12/28</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="copy-card-btn" onclick="copyAtmNumber('5234 5678 9012 3456', this)">
+                        <i class="fas fa-copy"></i>
+                        <span>Salin Nomor Rekening</span>
+                    </button>
+
+                    <div class="card-info">
+                        <i class="fas fa-user-circle"></i> a.n. <strong>Sumandiyah</strong> — Bank BRI
+                    </div>
+                </div>
+
+                <!-- ================= KARTU ATM 2 - BANK BNI (SUHERI) ================= -->
+                <div class="atm-card-wrapper fade-in-right">
+                    <div class="atm-card bni">
+                        <div class="atm-card-gloss"></div>
+                        
+                        <!-- Chip EMV -->
+                        <div class="card-chip"></div>
+                        
+                        <!-- Header - Logo Bank -->
+                        <div class="atm-card-header">
+                            <div class="bank-logo">
+                                <div class="bank-logo-text">BNI</div>
+                                <div class="bank-logo-tagline">Bank Negara Indonesia</div>
+                            </div>
+                            <div class="card-network">
+                                <svg class="card-network-logo" viewBox="0 0 50 30" fill="white">
+                                    <circle cx="15" cy="15" r="12" fill="#EB001B" opacity="0.9"/>
+                                    <circle cx="35" cy="15" r="12" fill="#F79E1B" opacity="0.9"/>
+                                    <path d="M 25 5 A 12 12 0 0 1 25 25 A 12 12 0 0 1 25 5 Z" fill="#FF5F00"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Nomor Kartu -->
+                        <div class="atm-card-number">
+                            <span class="group">
+                                <span>5</span><span>6</span><span>7</span><span>8</span>
+                            </span>
+                            <span class="group">
+                                <span>1</span><span>2</span><span>3</span><span>4</span>
+                            </span>
+                            <span class="group">
+                                <span>5</span><span>6</span><span>7</span><span>8</span>
+                            </span>
+                            <span class="group">
+                                <span>9</span><span>0</span><span>1</span><span>2</span>
+                            </span>
+                        </div>
+
+                        <!-- Footer - Nama & Expiry -->
+                        <div class="atm-card-footer">
+                            <div class="card-holder">
+                                <div class="card-holder-label">CARD HOLDER</div>
+                                <div class="card-holder-name">SUHERI</div>
+                            </div>
+                            <div class="card-expiry">
+                                <div class="card-expiry-label">VALID THRU</div>
+                                <div class="card-expiry-date">12/28</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="copy-card-btn" onclick="copyAtmNumber('5678 1234 5678 9012', this)">
+                        <i class="fas fa-copy"></i>
+                        <span>Salin Nomor Rekening</span>
+                    </button>
+
+                    <div class="card-info">
+                        <i class="fas fa-user-circle"></i> a.n. <strong>Suheri</strong> — Bank BNI
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ WISHES SECTION ============ -->
+        <section class="wishes-section islamic-pattern" id="wishes">
+            <h2 class="section-title fade-in">Ucapan & Doa</h2>
+            <p class="section-subtitle fade-in">Kirimkan doa terbaik untuk kami</p>
+            <div class="divider fade-in">
+                <div class="divider-line"></div>
+                <i class="fas fa-heart divider-icon"></i>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="wishes-container">
+                <div class="wish-form fade-in">
+                    <h3><i class="fas fa-pen"></i> Tulis Ucapan</h3>
+                    <div class="form-group">
+                        <input type="text" id="wishName" placeholder="Nama Anda" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="wishMessage" placeholder="Tulis ucapan dan doa terbaik..." maxlength="500"></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="submitWish()">
+                        <i class="fas fa-paper-plane"></i> Kirim Ucapan
+                    </button>
+                </div>
+
+                <div class="wishes-list" id="wishesList"></div>
+            </div>
+        </section>
+
+        <!-- ============ CLOSING SECTION ============ -->
+        <section class="closing-section" id="closing">
+            <div class="closing-content">
+                <div class="closing-ornament">❁ ﷽ ❁</div>
+                <div class="closing-arabic">
+                    وَبَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+                </div>
+                <p class="closing-text">
+                    "Semoga Allah memberkahi kalian berdua, dan memberkahi pernikahan kalian, 
+                    dan menyatukan kalian berdua dalam kebaikan."
+                </p>
+                <p class="closing-text">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i 
+                    berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                </p>
+                <div class="closing-names">Sumandiyah & Suheri</div>
+                <div class="closing-ornament">❁ ❁ ❁</div>
+                <p class="closing-thanks">
+                    Wassalamualaikum Warahmatullahi Wabarakatuh
+                </p>
+                <p class="closing-thanks" style="margin-top: 20px; font-size: 0.85rem;">
+                    <i class="fas fa-heart" style="color: #e74c3c;"></i>
+                    Terima Kasih
+                    <i class="fas fa-heart" style="color: #e74c3c;"></i>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ AUDIO ============ -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // ============================================================
+        // SISTEM NAMA TAMU DARI URL
+        // ============================================================
+        function getGuestData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const to = urlParams.get('to');
+            const addr = urlParams.get('addr');
+            
+            return {
+                name: to ? decodeURIComponent(to.replace(/\+/g, ' ')) : null,
+                address: addr ? decodeURIComponent(addr.replace(/\+/g, ' ')) : null
+            };
+        }
+
+        function setupGuestName() {
+            const guest = getGuestData();
+            const defaultName = "Tamu Undangan";
+            
+            const gateGuestName = document.getElementById('gateGuestName');
+            gateGuestName.textContent = guest.name || defaultName;
+            
+            const coverGuestName = document.getElementById('coverGuestName');
+            coverGuestName.textContent = guest.name || defaultName;
+            
+            const coverGuestAddress = document.getElementById('coverGuestAddress');
+            if (guest.address) {
+                coverGuestAddress.textContent = guest.address;
+            }
+            
+            if (guest.name) {
+                document.title = `Undangan untuk ${guest.name} - Sumandiyah & Suheri`;
+                
+                const wishNameInput = document.getElementById('wishName');
+                if (wishNameInput) {
+                    wishNameInput.value = guest.name;
+                }
+            }
+        }
+
+        // ============================================================
+        // EFEK PEMBUKAAN
+        // ============================================================
+        function createGatePetals() {
+            const gate = document.getElementById('gate');
+            if (!gate) return;
+
+            const petals = ['❁', '✿', '❀', '✾', '✦', '✧', '❋', '★', '♡'];
+            const colors = ['#d4af37', '#b8941f', '#f4e5a1', '#e8d9a0', '#c9a227'];
+
+            for (let i = 0; i < 25; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'gate-petal';
+                petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.color = colors[Math.floor(Math.random() * colors.length)];
+                petal.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                petal.style.animationDelay = Math.random() * 12 + 's';
+                petal.style.animationDuration = (Math.random() * 8 + 10) + 's';
+                gate.appendChild(petal);
+            }
+
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'gate-sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                gate.appendChild(sparkle);
+            }
+        }
+
+        function createConfettiFlowers() {
+            const flowers = ['❁', '✿', '❀', '✾', '❋', '✿', '❁', '✧', '✦'];
+            const colors = ['#d4af37', '#b8941f', '#f4e5a1', '#e8d9a0', '#c9a227', '#ffd700'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-flower';
+                confetti.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                confetti.style.animationDelay = (Math.random() * 0.8) + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if (confetti.parentNode) confetti.parentNode.removeChild(confetti);
+                }, 6000);
+            }
+        }
+
+        // ============================================================
+        // ANTI TAMPER PROTECTION
+        // ============================================================
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            e.preventDefault();
+            return false;
+        });
+
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (
+                (e.ctrlKey && e.key === 's') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // ============================================================
+        // LOADING
+        // ============================================================
+        window.addEventListener('load', () => {
+            setupGuestName();
+            createGatePetals();
+            
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2000);
+        });
+
+        // ============================================================
+        // GATE OPENING
+        // ============================================================
+        document.getElementById('openBtn').addEventListener('click', function() {
+            const gate = document.getElementById('gate');
+            const mainContent = document.getElementById('mainContent');
+            const lightBurst = document.getElementById('lightBurst');
+            const goldenRing = document.getElementById('goldenRing');
+            const shimmerScreen = document.getElementById('shimmerScreen');
+            const flashWhite = document.getElementById('flashWhite');
+            const coverContent = document.getElementById('coverContent');
+            
+            flashWhite.classList.add('active');
+            setTimeout(() => lightBurst.classList.add('active'), 200);
+            setTimeout(() => goldenRing.classList.add('active'), 400);
+            setTimeout(() => shimmerScreen.classList.add('active'), 500);
+            setTimeout(() => gate.classList.add('opened'), 600);
+            setTimeout(() => mainContent.classList.add('visible'), 900);
+            setTimeout(() => createConfettiFlowers(), 1200);
+            setTimeout(() => { if (coverContent) coverContent.classList.add('cover-reveal'); }, 1400);
+            
+            setTimeout(() => {
+                document.getElementById('homeLogo').classList.add('visible');
+                document.getElementById('navIcons').classList.add('visible');
+                document.getElementById('musicControl').classList.add('visible');
+                playMusic();
+            }, 2000);
+
+            setTimeout(() => {
+                initScrollAnimations();
+                loadWishes();
+                createParticles();
+            }, 2500);
+        });
+
+        // ============================================================
+        // MUSIC CONTROL
+        // ============================================================
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        function playMusic() {
+            bgMusic.volume = 0.4;
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                document.getElementById('musicControl').classList.add('playing');
+            }).catch(err => console.log('Autoplay prevented:', err));
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+                document.getElementById('musicControl').classList.remove('playing');
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+                document.getElementById('musicControl').classList.add('playing');
+            }
+        }
+
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = ['cover', 'profile', 'event', 'gallery', 'donation', 'wishes'];
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                const icon = document.querySelector(`.nav-icon[data-section="${id}"]`);
+                if (section && icon) {
+                    if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                        document.querySelectorAll('.nav-icon').forEach(i => i.classList.remove('active'));
+                        icon.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // ============================================================
+        // SCROLL ANIMATIONS
+        // ============================================================
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // ============================================================
+        // COPY NOMOR REKENING DARI KARTU ATM
+        // ============================================================
+        function copyAtmNumber(number, btnElement) {
+            // Hapus spasi untuk copy bersih
+            const cleanNumber = number.replace(/\s/g, '');
+            
+            navigator.clipboard.writeText(cleanNumber).then(() => {
+                const originalHTML = btnElement.innerHTML;
+                btnElement.classList.add('copied');
+                btnElement.innerHTML = '<i class="fas fa-check"></i> <span>Nomor Berhasil Disalin!</span>';
+                
+                showToast('Nomor rekening berhasil disalin! ✓');
+                
+                setTimeout(() => {
+                    btnElement.classList.remove('copied');
+                    btnElement.innerHTML = originalHTML;
+                }, 2500);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = cleanNumber;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                const originalHTML = btnElement.innerHTML;
+                btnElement.classList.add('copied');
+                btnElement.innerHTML = '<i class="fas fa-check"></i> <span>Nomor Berhasil Disalin!</span>';
+                showToast('Nomor rekening berhasil disalin! ✓');
+                
+                setTimeout(() => {
+                    btnElement.classList.remove('copied');
+                    btnElement.innerHTML = originalHTML;
+                }, 2500);
+            });
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                background: linear-gradient(135deg, #d4af37, #b8941f);
+                color: #ffffff;
+                padding: 15px 30px;
+                border-radius: 50px;
+                font-family: 'Playfair Display', serif;
+                font-size: 0.95rem;
+                font-weight: 600;
+                box-shadow: 0 10px 40px rgba(212, 175, 55, 0.5);
+                z-index: 10001;
+                opacity: 0;
+                transition: all 0.4s;
+                letter-spacing: 1px;
+                max-width: 90%;
+                text-align: center;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(-50%) translateY(0)';
+            });
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(20px)';
+                setTimeout(() => toast.remove(), 400);
+            }, 2500);
+        }
+
+        // ============================================================
+        // WISHES
+        // ============================================================
+        let wishes = [
+            {
+                name: "Ahmad Fauzi",
+                message: "Barakallahu lakuma wa baraka alaikuma wa jama'a bainakuma fi khair. Semoga menjadi keluarga sakinah, mawaddah, warahmah. Aamiin.",
+                time: "2 jam lalu"
+            },
+            {
+                name: "Siti Aminah",
+                message: "Selamat menempuh hidup baru Sumandiyah & Suheri. Semoga Allah selalu memberkahi pernikahan kalian hingga jannah. Aamiin Ya Rabbal Alamin.",
+                time: "5 jam lalu"
+            },
+            {
+                name: "Keluarga Besar",
+                message: "Turut berbahagia atas pernikahan kalian. Semoga menjadi keluarga yang bahagia dunia akhirat. Barakallahu lakuma.",
+                time: "1 hari lalu"
+            }
+        ];
+
+        function loadWishes() {
+            const list = document.getElementById('wishesList');
+            list.innerHTML = '';
+            wishes.forEach((wish, index) => {
+                const div = document.createElement('div');
+                div.className = 'wish-item';
+                div.style.animationDelay = `${index * 0.1}s`;
+                div.innerHTML = `
+                    <div class="wish-header">
+                        <span class="wish-name"><i class="fas fa-user-circle"></i> ${escapeHtml(wish.name)}</span>
+                        <span class="wish-time">${wish.time}</span>
+                    </div>
+                    <div class="wish-message">${escapeHtml(wish.message)}</div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function submitWish() {
+            const name = document.getElementById('wishName').value.trim();
+            const message = document.getElementById('wishMessage').value.trim();
+
+            if (!name) { showToast('Mohon isi nama Anda'); return; }
+            if (!message) { showToast('Mohon isi ucapan Anda'); return; }
+
+            wishes.unshift({ name: name, message: message, time: 'Baru saja' });
+            loadWishes();
+            
+            const guest = getGuestData();
+            document.getElementById('wishName').value = guest.name || '';
+            document.getElementById('wishMessage').value = '';
+            
+            showToast('Ucapan berhasil dikirim! Jazakallahu khairan 🤲');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ============================================================
+        // GALLERY
+        // ============================================================
+        function openGallery(index) {
+            showToast(`Membuka foto ${index}... 📸`);
+        }
+
+        // ============================================================
+        // PARTICLES
+        // ============================================================
+        function createParticles() {
+            const colors = ['#d4af37', '#b8941f', '#f4e5a1', '#e8d9a0'];
+            const shapes = ['✦', '❁', '✧', '❋', '✿', '★'];
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                document.body.appendChild(particle);
+            }
+        }
+
+        // ============================================================
+        // KEYBOARD NAVIGATION
+        // ============================================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const sections = ['cover', 'profile', 'event', 'gallery', 'donation', 'wishes', 'closing'];
+                const currentScroll = window.scrollY + 100;
+                for (let id of sections) {
+                    const el = document.getElementById(id);
+                    if (el && el.offsetTop > currentScroll) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                        break;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
