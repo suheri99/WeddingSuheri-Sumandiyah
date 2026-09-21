@@ -101,16 +101,13 @@
                 opacity: 1;
                 transform: translate(0, 0) rotate(-45deg) scale(1);
             }
-            95% {
-                opacity: 1;
-            }
+            95% { opacity: 1; }
             100% {
                 opacity: 0;
                 transform: translate(-800px, 800px) rotate(-45deg) scale(0.8);
             }
         }
 
-        /* Variasi arah - kiri ke bawah */
         .shooting-star.reverse::before {
             right: auto;
             left: 100%;
@@ -135,16 +132,13 @@
                 opacity: 1;
                 transform: translate(0, 0) rotate(135deg) scale(1);
             }
-            95% {
-                opacity: 1;
-            }
+            95% { opacity: 1; }
             100% {
                 opacity: 0;
                 transform: translate(800px, 800px) rotate(135deg) scale(0.8);
             }
         }
 
-        /* Efek trail - bintang lebih terang saat melintas */
         .shooting-star::after {
             content: '';
             position: absolute;
@@ -163,51 +157,228 @@
             50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
         }
 
-        /* ============ LOADING SCREEN ============ */
+        /* ============ LOADING SCREEN - MOBILE FRIENDLY ============ */
         .loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--white), var(--cream));
+            height: 100dvh;
+            background: linear-gradient(135deg, #fefefe 0%, #fdfbf5 50%, #faf5e6 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            transition: opacity 1s, visibility 1s;
+            transition: opacity 1s ease, visibility 1s ease;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
         }
 
         .loader.hidden {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(
+                ellipse at center,
+                rgba(212, 175, 55, 0.15) 0%,
+                transparent 70%
+            );
+            animation: loaderGlow 3s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes loaderGlow {
+            from { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .loader-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+            gap: 20px;
         }
 
         .bismillah-loader {
             font-family: 'Amiri', serif;
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 12vw, 5rem);
+            line-height: 1.2;
             color: var(--gold);
-            margin-bottom: 30px;
-            animation: fadeInOut 2s infinite;
+            text-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.3);
+            animation: fadeInOut 2.5s ease-in-out infinite;
+            padding: 0 15px;
+            max-width: 100%;
+            word-wrap: break-word;
+            direction: rtl;
         }
 
         @keyframes fadeInOut {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
+            0%, 100% { 
+                opacity: 0.6; 
+                transform: scale(1);
+                filter: blur(0);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.08);
+                filter: blur(0.5px);
+            }
+        }
+
+        .loading-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(0.7rem, 3.5vw, 0.95rem);
+            color: var(--text-soft);
+            letter-spacing: clamp(2px, 1.5vw, 5px);
+            text-transform: uppercase;
+            margin-top: 10px;
+            opacity: 0;
+            animation: loadingTextFade 2s ease-in-out 0.3s forwards;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        @keyframes loadingTextFade {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .loader-ring {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            width: clamp(55px, 15vw, 75px);
+            height: clamp(55px, 15vw, 75px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .loader-ring::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: clamp(2px, 0.6vw, 3px) solid rgba(212, 175, 55, 0.15);
             border-top-color: var(--gold);
+            border-right-color: rgba(212, 175, 55, 0.6);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            box-shadow: 
+                0 0 15px rgba(212, 175, 55, 0.3),
+                inset 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .loader-ring::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            border: clamp(2px, 0.5vw, 2.5px) solid rgba(212, 175, 55, 0.1);
+            border-bottom-color: var(--dark-gold);
+            border-radius: 50%;
+            animation: spinReverse 1.8s linear infinite;
         }
 
         @keyframes spin {
+            from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .loader-ornament {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            color: var(--gold);
+            opacity: 0.6;
+            letter-spacing: 10px;
+            margin: 5px 0;
+            animation: ornamentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ornamentPulse {
+            0%, 100% { opacity: 0.4; letter-spacing: 10px; }
+            50% { opacity: 0.8; letter-spacing: 15px; }
+        }
+
+        @media (max-width: 768px) {
+            .loader { padding: 15px; }
+            .bismillah-loader { font-size: clamp(2.2rem, 14vw, 4rem); }
+            .loader-ring {
+                width: clamp(50px, 16vw, 65px);
+                height: clamp(50px, 16vw, 65px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loader { padding: 15px 10px; }
+            .loader-content { gap: 15px; }
+            .bismillah-loader {
+                font-size: clamp(2rem, 16vw, 3.5rem);
+                padding: 0 10px;
+                text-shadow: 
+                    0 0 15px rgba(212, 175, 55, 0.6),
+                    0 0 30px rgba(212, 175, 55, 0.3);
+            }
+            .loading-text {
+                font-size: clamp(0.65rem, 3.5vw, 0.8rem);
+                letter-spacing: clamp(2px, 1.2vw, 3px);
+                padding: 0 15px;
+            }
+            .loader-ring {
+                width: clamp(45px, 18vw, 60px);
+                height: clamp(45px, 18vw, 60px);
+            }
+            .loader-ornament {
+                font-size: 0.75rem;
+                letter-spacing: 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .bismillah-loader { font-size: 2rem; }
+            .loading-text {
+                font-size: 0.6rem;
+                letter-spacing: 2px;
+            }
+            .loader-ring {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .loader-content {
+                flex-direction: row;
+                gap: 30px;
+            }
+            .bismillah-loader { font-size: 2.5rem; }
+            .loader-ring {
+                width: 50px;
+                height: 50px;
+            }
         }
 
         /* ============ OPENING GATE ============ */
@@ -323,32 +494,10 @@
             height: 100%;
         }
 
-        .gate-ornament.tl {
-            top: 20px;
-            left: 20px;
-            animation-delay: 0.3s;
-        }
-
-        .gate-ornament.tr {
-            top: 20px;
-            right: 20px;
-            transform: scaleX(-1);
-            animation-delay: 0.5s;
-        }
-
-        .gate-ornament.bl {
-            bottom: 20px;
-            left: 20px;
-            transform: scaleY(-1);
-            animation-delay: 0.7s;
-        }
-
-        .gate-ornament.br {
-            bottom: 20px;
-            right: 20px;
-            transform: scale(-1, -1);
-            animation-delay: 0.9s;
-        }
+        .gate-ornament.tl { top: 20px; left: 20px; animation-delay: 0.3s; }
+        .gate-ornament.tr { top: 20px; right: 20px; transform: scaleX(-1); animation-delay: 0.5s; }
+        .gate-ornament.bl { bottom: 20px; left: 20px; transform: scaleY(-1); animation-delay: 0.7s; }
+        .gate-ornament.br { bottom: 20px; right: 20px; transform: scale(-1, -1); animation-delay: 0.9s; }
 
         @keyframes fadeInOrnament {
             from { opacity: 0; transform: translate(20px, 20px) scale(0.8); }
@@ -519,6 +668,11 @@
             position: relative;
             opacity: 0;
             animation: titleReveal 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
         }
 
         @keyframes titleReveal {
@@ -1686,7 +1840,6 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* ===== KARTU BRI - Warna Biru Khas BRI ===== */
         .atm-card.bri {
             background: 
                 radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
@@ -1718,7 +1871,6 @@
             pointer-events: none;
         }
 
-        /* ===== KARTU BNI - Warna Merah Oranye Khas BNI ===== */
         .atm-card.bni {
             background: 
                 radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
@@ -1750,7 +1902,6 @@
             pointer-events: none;
         }
 
-        /* Hover efek 3D */
         .atm-card:hover {
             transform: rotateY(-5deg) rotateX(5deg) scale(1.03);
             box-shadow: 
@@ -1773,7 +1924,6 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
-        /* Header kartu - Logo Bank */
         .atm-card-header {
             display: flex;
             justify-content: space-between;
@@ -2356,10 +2506,15 @@
 </head>
 <body>
 
-    <!-- ============ LOADING SCREEN ============ -->
+    <!-- ============ LOADING SCREEN - MOBILE FRIENDLY ============ -->
     <div class="loader" id="loader">
-        <div class="bismillah-loader">﷽</div>
-        <div class="loader-ring"></div>
+        <div class="loader-content">
+            <div class="loader-ornament">✦ ❁ ✦</div>
+            <div class="bismillah-loader">﷽</div>
+            <div class="loader-ring"></div>
+            <div class="loading-text">Memuat Undangan...</div>
+            <div class="loader-ornament">✦ ❁ ✦</div>
+        </div>
     </div>
 
     <!-- ============ EFEK LEDAKAN PEMBUKAAN ============ -->
@@ -2879,22 +3034,16 @@
         }
 
         // ============================================================
-        // EFEK SHOOTING STAR (BINTANG JATUH)
+        // EFEK SHOOTING STAR
         // ============================================================
         function createShootingStar() {
             const star = document.createElement('div');
             star.className = 'shooting-star';
             
-            // Random posisi awal di bagian atas layar
-            const startX = Math.random() * window.innerWidth + 200; // mulai dari kanan
-            const startY = Math.random() * (window.innerHeight * 0.5); // 0-50% dari atas
-            
-            // Random variasi ukuran
             if (Math.random() > 0.7) {
                 star.classList.add('large');
             }
             
-            // Random arah (10% ke kanan, 90% ke kiri)
             if (Math.random() > 0.9) {
                 star.classList.add('reverse');
                 star.style.right = (Math.random() * 50) + '%';
@@ -2904,33 +3053,26 @@
                 star.style.top = (Math.random() * 50) + '%';
             }
             
-            // Random kecepatan animasi
-            const duration = 2 + Math.random() * 2; // 2-4 detik
+            const duration = 2 + Math.random() * 2;
             star.style.animationDuration = duration + 's';
             
             document.body.appendChild(star);
             
-            // Hapus setelah animasi selesai
             setTimeout(() => {
                 if (star.parentNode) star.parentNode.removeChild(star);
             }, duration * 1000);
         }
 
-        // Loop shooting star terus-menerus
         function startShootingStars() {
-            // Bintang pertama muncul setelah 1 detik
             setTimeout(() => {
                 createShootingStar();
                 
-                // Loop tak terbatas
                 setInterval(() => {
                     createShootingStar();
-                    
-                    // Kadang muncul 2 bintang sekaligus (30% chance)
                     if (Math.random() > 0.7) {
                         setTimeout(createShootingStar, 300 + Math.random() * 500);
                     }
-                }, 1500 + Math.random() * 1500); // tiap 1.5-3 detik
+                }, 1500 + Math.random() * 1500);
             }, 1000);
         }
 
@@ -3026,7 +3168,7 @@
             
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
-            }, 2000);
+            }, 2500);
         });
 
         // ============================================================
@@ -3061,7 +3203,7 @@
                 initScrollAnimations();
                 loadWishes();
                 createParticles();
-                startShootingStars(); // ← Mulai efek bintang jatuh
+                startShootingStars();
             }, 2500);
         });
 
