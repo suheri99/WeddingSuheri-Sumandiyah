@@ -1566,100 +1566,627 @@
 
         .divider-icon { color: var(--gold); font-size: 1.2rem; }
 
-        /* ============ PROFILE SECTION ============ */
+        /* ============================================================
+           PROFILE SECTION - SPEKTAKULER
+           ============================================================ */
+        .profile-section {
+            background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 20px;
+        }
+
+        .profile-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150vmax;
+            height: 150vmax;
+            transform: translate(-50%, -50%);
+            background: 
+                radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 30%),
+                conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(212, 175, 55, 0.03) 15deg,
+                    transparent 30deg,
+                    transparent 90deg,
+                    rgba(212, 175, 55, 0.03) 105deg,
+                    transparent 120deg,
+                    transparent 180deg,
+                    rgba(212, 175, 55, 0.03) 195deg,
+                    transparent 210deg,
+                    transparent 270deg,
+                    rgba(212, 175, 55, 0.03) 285deg,
+                    transparent 300deg,
+                    transparent 360deg
+                );
+            animation: profileBgRotate 90s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes profileBgRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .profile-section::after {
+            content: '❁';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40vmin;
+            color: rgba(212, 175, 55, 0.03);
+            animation: profileFlowerRotate 120s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes profileFlowerRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.1); }
+            to { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+        }
+
+        .profile-section > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-section .section-title {
+            font-size: 3.8rem;
+            background: linear-gradient(135deg, 
+                var(--gold) 0%, 
+                var(--light-gold) 25%, 
+                var(--dark-gold) 50%, 
+                var(--light-gold) 75%, 
+                var(--gold) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGoldShimmer 4s linear infinite;
+            filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.4));
+            position: relative;
+        }
+
+        @keyframes titleGoldShimmer {
+            to { background-position: 200% center; }
+        }
+
+        .profile-section .section-title::before,
+        .profile-section .section-title::after {
+            content: '❁';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--gold);
+            animation: rotateFlower 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        .profile-section .section-title::before { left: -40px; }
+        .profile-section .section-title::after { right: -40px; }
+
+        .profile-section .divider {
+            position: relative;
+            margin: 30px 0 60px;
+        }
+
+        .profile-section .divider-line {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, 
+                transparent, 
+                var(--gold) 30%,
+                var(--light-gold) 50%,
+                var(--gold) 70%,
+                transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-section .divider-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            animation: dividerShine 3s ease-in-out infinite;
+        }
+
+        @keyframes dividerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .profile-section .divider-icon {
+            font-size: 1.5rem;
+            animation: dividerIconPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+        }
+
+        @keyframes dividerIconPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                color: var(--gold);
+            }
+            50% { 
+                transform: scale(1.3) rotate(180deg); 
+                color: var(--light-gold);
+            }
+        }
+
         .profile-cards {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            max-width: 1000px;
+            gap: 50px;
+            max-width: 1100px;
             width: 100%;
+            position: relative;
         }
 
         .profile-card {
-            background: var(--white);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 20px;
-            padding: 45px 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #fdfbf5 50%, #ffffff 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 30px;
+            padding: 55px 35px 45px;
             text-align: center;
             flex: 1;
-            min-width: 280px;
-            max-width: 380px;
-            transition: all 0.5s;
+            min-width: 300px;
+            max-width: 420px;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 40px var(--shadow-soft);
+            box-shadow: 
+                0 15px 50px rgba(212, 175, 55, 0.2),
+                0 0 0 1px rgba(212, 175, 55, 0.1) inset;
+            animation: cardFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .profile-card::before {
             content: '';
             position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--gold), 
+                var(--light-gold), 
+                var(--dark-gold),
+                var(--light-gold),
+                var(--gold));
+            background-size: 300% 300%;
+            border-radius: 32px;
+            z-index: -2;
+            animation: borderFlowProfile 4s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes borderFlowProfile {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .profile-card::after {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--gold), var(--light-gold), var(--gold));
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+            border-radius: 30px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .profile-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 30px 80px rgba(212, 175, 55, 0.35),
+                0 0 60px rgba(212, 175, 55, 0.2),
+                0 0 0 1px var(--gold) inset;
             border-color: var(--gold);
         }
 
+        .profile-card .card-corner-ornament {
+            position: absolute;
+            font-size: 1.3rem;
+            color: var(--gold);
+            z-index: 3;
+            opacity: 0;
+            transition: all 0.6s;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+            pointer-events: none;
+        }
+
+        .profile-card .card-corner-ornament.tl { top: 15px; left: 15px; transform: translate(-15px, -15px); }
+        .profile-card .card-corner-ornament.tr { top: 15px; right: 15px; transform: translate(15px, -15px); }
+        .profile-card .card-corner-ornament.bl { bottom: 15px; left: 15px; transform: translate(-15px, 15px); }
+        .profile-card .card-corner-ornament.br { bottom: 15px; right: 15px; transform: translate(15px, 15px); }
+
+        .profile-card:hover .card-corner-ornament {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* ============================================================
+           PROFILE PHOTO - PERSEGI EMPAT (ROUNDED SQUARE)
+           ============================================================ */
         .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 25px;
-            border: 3px solid var(--gold);
+            width: 200px;
+            height: 240px;
+            border-radius: 20px; /* ← Sudut melengkung persegi */
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--gold);
             background: linear-gradient(135deg, var(--cream), var(--white));
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.1), 0 10px 30px var(--shadow-gold);
-            overflow: hidden;
+            overflow: visible;
+            transition: all 0.6s;
         }
 
-        .profile-photo img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+        /* Ring emas berputar - persegi empat */
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 26px;
+            background: conic-gradient(
+                from 0deg,
+                var(--gold),
+                var(--light-gold),
+                var(--dark-gold),
+                var(--light-gold),
+                var(--gold)
+            );
+            animation: ringRotate 8s linear infinite;
+            z-index: -1;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+        }
+
+        @keyframes ringRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Ring kedua putus-putus - persegi empat */
+        .profile-photo::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 30px;
+            border: 2px dashed rgba(212, 175, 55, 0.5);
+            animation: ringRotateReverse 12s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes ringRotateReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        /* Wrapper foto untuk menjaga bentuk persegi dan crop gambar */
+        .profile-photo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.3),
+                0 0 0 4px var(--white),
+                inset 0 0 20px rgba(212, 175, 55, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-photo-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .profile-photo-inner i {
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.5));
+            font-size: 4.5rem;
+        }
+
+        /* Ornamen bunga di 4 sudut foto */
+        .profile-photo-ornament {
+            position: absolute;
+            font-size: 1.2rem;
+            color: var(--gold);
+            z-index: 5;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+            animation: ornamentFloat 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .profile-photo-ornament.tl { top: -18px; left: -18px; transform: rotate(-45deg); }
+        .profile-photo-ornament.tr { top: -18px; right: -18px; transform: rotate(45deg); animation-delay: 0.5s; }
+        .profile-photo-ornament.bl { bottom: -18px; left: -18px; transform: rotate(-135deg); animation-delay: 1s; }
+        .profile-photo-ornament.br { bottom: -18px; right: -18px; transform: rotate(135deg); animation-delay: 1.5s; }
+
+        @keyframes ornamentFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(var(--rotate, 0deg)); 
+                filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            }
+            50% { 
+                transform: translateY(-5px) rotate(var(--rotate, 0deg)); 
+                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 1));
+            }
+        }
+
+        .profile-photo-ornament.tl { --rotate: -45deg; }
+        .profile-photo-ornament.tr { --rotate: 45deg; }
+        .profile-photo-ornament.bl { --rotate: -135deg; }
+        .profile-photo-ornament.br { --rotate: 135deg; }
+
+        .profile-card:hover .profile-photo {
+            transform: scale(1.08);
+        }
+
+        .profile-card:hover .profile-photo::before {
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.9));
+            animation-duration: 3s;
+        }
+
+        .profile-card:hover .profile-photo-ornament {
+            animation-duration: 1.5s;
+        }
 
         .profile-name {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: var(--gold);
-            margin-bottom: 10px;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
             position: relative;
             z-index: 1;
+            background: linear-gradient(135deg, 
+                var(--gold) 0%, 
+                var(--light-gold) 25%, 
+                var(--dark-gold) 50%, 
+                var(--light-gold) 75%, 
+                var(--gold) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: nameGoldShimmer 3s linear infinite;
+            filter: drop-shadow(0 2px 12px rgba(212, 175, 55, 0.4));
+            transition: all 0.4s;
+        }
+
+        @keyframes nameGoldShimmer {
+            to { background-position: 200% center; }
+        }
+
+        .profile-card:hover .profile-name {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.7));
         }
 
         .profile-desc {
             color: var(--text-soft);
-            font-size: 1rem;
-            line-height: 1.9;
+            font-size: 1.05rem;
+            line-height: 2;
             position: relative;
             z-index: 1;
             font-family: 'Cormorant Garamond', serif;
+            transition: all 0.4s;
         }
 
-        .profile-desc strong { color: var(--text-dark); font-weight: 600; }
+        .profile-desc strong {
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .profile-card:hover .profile-desc strong {
+            color: var(--gold);
+        }
+
+        .profile-name-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 10px 0 15px;
+            opacity: 0.6;
+            transition: all 0.4s;
+        }
+
+        .profile-name-line .mini-line {
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .profile-name-line .mini-flower {
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        .profile-card:hover .profile-name-line {
+            opacity: 1;
+            gap: 12px;
+        }
 
         .love-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #e74c3c;
             display: flex;
             align-items: center;
+            justify-content: center;
+            position: relative;
             animation: heartbeat 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 5px 15px rgba(231, 76, 60, 0.4));
+            filter: drop-shadow(0 0 20px rgba(231, 76, 60, 0.6));
+            z-index: 3;
+        }
+
+        .love-icon::before,
+        .love-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(231, 76, 60, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: heartPulse 2s ease-out infinite;
+        }
+
+        .love-icon::after {
+            animation-delay: 1s;
+        }
+
+        @keyframes heartPulse {
+            0% {
+                width: 60px;
+                height: 60px;
+                opacity: 1;
+            }
+            100% {
+                width: 140px;
+                height: 140px;
+                opacity: 0;
+            }
         }
 
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+        }
+
+        .love-icon i {
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 900px) {
+            .profile-section .section-title::before,
+            .profile-section .section-title::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-section { padding: 80px 15px; }
+            .profile-section .section-title { font-size: 2.8rem; }
+            
+            .profile-cards {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .profile-card {
+                min-width: 280px;
+                max-width: 100%;
+                padding: 45px 25px 35px;
+            }
+            
+            .profile-photo {
+                width: 170px;
+                height: 200px;
+            }
+            
+            .profile-photo-inner i {
+                font-size: 3.5rem;
+            }
+            
+            .profile-name { font-size: 2.6rem; }
+            .profile-desc { font-size: 0.95rem; }
+            .love-icon { font-size: 2.8rem; transform: rotate(90deg); }
+            
+            .love-icon::before,
+            .love-icon::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-section .section-title { font-size: 2.2rem; }
+            .profile-card { padding: 35px 20px 30px; }
+            
+            .profile-photo {
+                width: 150px;
+                height: 180px;
+            }
+            
+            .profile-photo::before {
+                top: -8px;
+                left: -8px;
+                right: -8px;
+                bottom: -8px;
+                border-radius: 22px;
+            }
+            
+            .profile-photo::after {
+                top: -16px;
+                left: -16px;
+                right: -16px;
+                bottom: -16px;
+                border-radius: 26px;
+            }
+            
+            .profile-photo-ornament {
+                font-size: 1rem;
+            }
+            
+            .profile-photo-ornament.tl { top: -14px; left: -14px; }
+            .profile-photo-ornament.tr { top: -14px; right: -14px; }
+            .profile-photo-ornament.bl { bottom: -14px; left: -14px; }
+            .profile-photo-ornament.br { bottom: -14px; right: -14px; }
+            
+            .profile-photo-inner i {
+                font-size: 3rem;
+            }
+            
+            .profile-name { font-size: 2.2rem; }
+            .profile-desc { font-size: 0.9rem; }
         }
 
         /* ============ EVENT SECTION ============ */
@@ -1771,9 +2298,7 @@
             box-shadow: 0 10px 25px var(--shadow-gold);
         }
 
-        /* ============================================================
-           GALLERY SECTION - FANTASTIC EFFECT
-           ============================================================ */
+        /* ============ GALLERY SECTION ============ */
         .gallery-section {
             background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
             position: relative;
@@ -1803,7 +2328,6 @@
             z-index: 2;
         }
 
-        /* Gallery item dengan efek fantastik */
         .gallery-item {
             aspect-ratio: 1;
             border-radius: 20px;
@@ -1825,7 +2349,6 @@
             will-change: transform;
         }
 
-        /* Glow ring saat hover */
         .gallery-item::before {
             content: '';
             position: absolute;
@@ -1856,7 +2379,6 @@
             opacity: 1;
         }
 
-        /* Efek shimmer kilau */
         .gallery-item::after {
             content: '';
             position: absolute;
@@ -1905,7 +2427,6 @@
             transform: scale(1.15);
         }
 
-        /* Icon default */
         .gallery-item i {
             font-size: 3.5rem;
             margin-bottom: 15px;
@@ -1934,7 +2455,6 @@
             color: var(--gold);
         }
 
-        /* Ornamen bunga di sudut-sudut */
         .gallery-corner {
             position: absolute;
             font-size: 1.3rem;
@@ -1956,7 +2476,6 @@
             transform: translate(0, 0);
         }
 
-        /* Icon zoom overlay */
         .gallery-zoom-icon {
             position: absolute;
             top: 50%;
@@ -1983,6 +2502,80 @@
         .gallery-item:hover .gallery-zoom-icon {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
+        }
+
+        .gallery-touch-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            border-radius: 30px;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 5px 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            animation: touchPulse 2.5s ease-in-out infinite;
+            transition: all 0.4s;
+        }
+
+        .gallery-touch-label i {
+            font-size: 0.85rem;
+            animation: touchHand 1.5s ease-in-out infinite;
+            filter: none;
+            margin: 0;
+            position: static;
+        }
+
+        @keyframes touchPulse {
+            0%, 100% {
+                opacity: 0.85;
+                transform: translateX(-50%) translateY(0) scale(1);
+                box-shadow: 
+                    0 5px 20px rgba(212, 175, 55, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(-3px) scale(1.05);
+                box-shadow: 
+                    0 8px 25px rgba(212, 175, 55, 0.5),
+                    0 0 20px rgba(212, 175, 55, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        @keyframes touchHand {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-2px) scale(1.15);
+            }
+        }
+
+        .gallery-item:hover .gallery-touch-label {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--white);
+            border-color: var(--light-gold);
+            transform: translateX(-50%) translateY(-5px) scale(1.08);
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.6),
+                0 0 25px rgba(212, 175, 55, 0.5);
         }
 
         /* ============ LIGHTBOX MODAL ============ */
@@ -2025,7 +2618,6 @@
             transform: scale(1) translateY(0);
         }
 
-        /* Frame foto mewah */
         .lightbox-frame {
             position: relative;
             padding: 15px;
@@ -2057,7 +2649,6 @@
             pointer-events: none;
         }
 
-        /* Ornamen di 4 sudut frame */
         .lightbox-frame-ornament {
             position: absolute;
             font-size: 1.8rem;
@@ -2095,7 +2686,6 @@
             border-radius: 8px;
         }
 
-        /* Info bar bawah */
         .lightbox-info {
             margin-top: 20px;
             text-align: center;
@@ -2137,7 +2727,6 @@
             letter-spacing: 1px;
         }
 
-        /* Tombol close */
         .lightbox-close {
             position: fixed;
             top: 25px;
@@ -2166,7 +2755,6 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
         }
 
-        /* Tombol navigasi prev/next */
         .lightbox-nav {
             position: fixed;
             top: 50%;
@@ -2202,7 +2790,6 @@
             transform: translateY(-50%) scale(0.95);
         }
 
-        /* Responsive lightbox */
         @media (max-width: 768px) {
             .lightbox-frame { padding: 10px; }
             .lightbox-image-wrapper img { max-height: 60vh; }
@@ -2263,7 +2850,6 @@
             margin-top: 20px;
         }
 
-        /* ============ ATM CARD STYLES ============ */
         .atm-card-wrapper {
             perspective: 1500px;
             width: 100%;
@@ -2895,7 +3481,6 @@
             .nav-icons { padding: 10px 15px; gap: 6px; bottom: 20px; }
             .nav-icon { width: 40px; height: 40px; font-size: 0.95rem; }
             .home-logo { width: 50px; height: 50px; font-size: 1.2rem; bottom: 20px; left: 15px; }
-            .profile-cards { flex-direction: column; align-items: center; }
             .love-icon { transform: rotate(90deg); }
             .closing-arabic { font-size: 1.3rem; }
             .couple-photo-frame { width: 260px; height: 330px; }
@@ -2904,6 +3489,12 @@
             .atm-card-wrapper { max-width: 100%; }
             .verse-arabic { font-size: 1.2rem; }
             .verse-translation { font-size: 0.95rem; }
+            .gallery-touch-label {
+                font-size: 0.7rem;
+                padding: 7px 15px;
+                letter-spacing: 1px;
+                bottom: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2939,6 +3530,17 @@
             .card-expiry-label { font-size: 0.5rem; }
             .card-network-bottom svg { width: 45px; }
             .card-network-logo { width: 40px; }
+
+            .gallery-touch-label {
+                font-size: 0.6rem;
+                padding: 6px 12px;
+                letter-spacing: 0.5px;
+                bottom: 12px;
+                gap: 5px;
+            }
+            .gallery-touch-label i {
+                font-size: 0.7rem;
+            }
         }
 
         /* ============ FLOATING PARTICLES ============ */
@@ -3155,7 +3757,7 @@
             </div>
         </section>
 
-        <!-- ============ PROFILE SECTION ============ -->
+        <!-- ============ PROFILE SECTION - PERSEGI EMPAT ============ -->
         <section class="profile-section islamic-pattern" id="profile">
             <h2 class="section-title fade-in">Mempelai</h2>
             
@@ -3174,14 +3776,34 @@
             </div>
 
             <div class="profile-cards">
+                <!-- Mempelai Wanita -->
                 <div class="profile-card fade-in-left">
+                    <span class="card-corner-ornament tl">❁</span>
+                    <span class="card-corner-ornament tr">❁</span>
+                    <span class="card-corner-ornament bl">❁</span>
+                    <span class="card-corner-ornament br">❁</span>
+
                     <div class="profile-photo">
-                        <img src="images/foto-sumandiyah.jpg" 
-                             alt="Sumandiyah"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user" style="display: none;"></i>
+                        <span class="profile-photo-ornament tl">❁</span>
+                        <span class="profile-photo-ornament tr">❁</span>
+                        <span class="profile-photo-ornament bl">❁</span>
+                        <span class="profile-photo-ornament br">❁</span>
+                        
+                        <div class="profile-photo-inner">
+                            <img src="20260413_102721.jpg" 
+                                 alt="Sumandiyah"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-user" style="display: none;"></i>
+                        </div>
                     </div>
                     <h3 class="profile-name">Sumandiyah</h3>
+                    
+                    <div class="profile-name-line">
+                        <span class="mini-line"></span>
+                        <span class="mini-flower">❁</span>
+                        <span class="mini-line"></span>
+                    </div>
+                    
                     <p class="profile-desc">
                         Putri dari<br>
                         <strong>Bapak Ahmad</strong> & <strong>Ibu Siti</strong><br>
@@ -3189,18 +3811,39 @@
                     </p>
                 </div>
 
+                <!-- Love Icon -->
                 <div class="love-icon">
                     <i class="fas fa-heart"></i>
                 </div>
 
+                <!-- Mempelai Pria -->
                 <div class="profile-card fade-in-right">
+                    <span class="card-corner-ornament tl">❁</span>
+                    <span class="card-corner-ornament tr">❁</span>
+                    <span class="card-corner-ornament bl">❁</span>
+                    <span class="card-corner-ornament br">❁</span>
+
                     <div class="profile-photo">
-                        <img src="images/foto-suheri.jpg" 
-                             alt="Suheri"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user" style="display: none;"></i>
+                        <span class="profile-photo-ornament tl">❁</span>
+                        <span class="profile-photo-ornament tr">❁</span>
+                        <span class="profile-photo-ornament bl">❁</span>
+                        <span class="profile-photo-ornament br">❁</span>
+                        
+                        <div class="profile-photo-inner">
+                            <img src="WhatsApp Image 2026-07-02 at 15.17.50.jpeg" 
+                                 alt="Suheri"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-user" style="display: none;"></i>
+                        </div>
                     </div>
                     <h3 class="profile-name">Suheri</h3>
+                    
+                    <div class="profile-name-line">
+                        <span class="mini-line"></span>
+                        <span class="mini-flower">❁</span>
+                        <span class="mini-line"></span>
+                    </div>
+                    
                     <p class="profile-desc">
                         Putra dari<br>
                         <strong>Bapak Haji</strong> & <strong>Ibu Hajjah</strong><br>
@@ -3269,7 +3912,7 @@
             </div>
         </section>
 
-        <!-- ============ GALLERY SECTION - FANTASTIC ============ -->
+        <!-- ============ GALLERY SECTION ============ -->
         <section class="gallery-section islamic-pattern" id="gallery">
             <h2 class="section-title fade-in">Galeri</h2>
             <p class="section-subtitle fade-in">Momen indah kami</p>
@@ -3290,7 +3933,12 @@
                     <div class="gallery-zoom-icon">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <div class="gallery-touch-label">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Sentuh untuk Melihat</span>
+                    </div>
                 </div>
+
                 <div class="gallery-item fade-in" onclick="openLightbox(2)">
                     <img src="images/galeri2.jpg" alt="Galeri 2" onerror="this.style.display='none';">
                     <i class="fas fa-image"></i>
@@ -3301,7 +3949,12 @@
                     <div class="gallery-zoom-icon">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <div class="gallery-touch-label">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Sentuh untuk Melihat</span>
+                    </div>
                 </div>
+
                 <div class="gallery-item fade-in" onclick="openLightbox(3)">
                     <img src="images/galeri3.jpg" alt="Galeri 3" onerror="this.style.display='none';">
                     <i class="fas fa-image"></i>
@@ -3312,7 +3965,12 @@
                     <div class="gallery-zoom-icon">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <div class="gallery-touch-label">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Sentuh untuk Melihat</span>
+                    </div>
                 </div>
+
                 <div class="gallery-item fade-in" onclick="openLightbox(4)">
                     <img src="images/galeri4.jpg" alt="Galeri 4" onerror="this.style.display='none';">
                     <i class="fas fa-image"></i>
@@ -3323,7 +3981,12 @@
                     <div class="gallery-zoom-icon">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <div class="gallery-touch-label">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Sentuh untuk Melihat</span>
+                    </div>
                 </div>
+
                 <div class="gallery-item fade-in" onclick="openLightbox(5)">
                     <img src="images/galeri5.jpg" alt="Galeri 5" onerror="this.style.display='none';">
                     <i class="fas fa-image"></i>
@@ -3334,7 +3997,12 @@
                     <div class="gallery-zoom-icon">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <div class="gallery-touch-label">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Sentuh untuk Melihat</span>
+                    </div>
                 </div>
+
                 <div class="gallery-item fade-in" onclick="openLightbox(6)">
                     <img src="images/galeri6.jpg" alt="Galeri 6" onerror="this.style.display='none';">
                     <i class="fas fa-image"></i>
@@ -3344,6 +4012,10 @@
                     <span class="gallery-corner br">❁</span>
                     <div class="gallery-zoom-icon">
                         <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-touch-label">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Sentuh untuk Melihat</span>
                     </div>
                 </div>
             </div>
@@ -3365,7 +4037,6 @@
 
             <div class="donation-container">
 
-                <!-- KARTU ATM 1 - BANK BRI (SUMANDIYAH) -->
                 <div class="atm-card-wrapper fade-in-left">
                     <div class="atm-card bri">
                         <div class="atm-card-gloss"></div>
@@ -3414,7 +4085,6 @@
                     </div>
                 </div>
 
-                <!-- KARTU ATM 2 - BANK BNI (SUHERI) -->
                 <div class="atm-card-wrapper fade-in-right">
                     <div class="atm-card bni">
                         <div class="atm-card-gloss"></div>
@@ -3569,15 +4239,15 @@
         }
 
         // ============================================================
-        // LIGHTBOX GALERI - SISTEM FANTASTIK
+        // LIGHTBOX GALERI
         // ============================================================
         const galleryImages = [
-            { src: '1.jpg', caption: 'Momen Indah Kami' },
-            { src: '2.jpg', caption: 'Kebersamaan Kami' },
-            { src: '3.jpg', caption: 'Kenangan Terindah' },
-            { src: '4.jpg', caption: 'Cinta Kami' },
-            { src: '5.jpg', caption: 'Kebahagiaan Kami' },
-            { src: '6.jpg', caption: 'Selamanya Bersama' }
+            { src: 'images/galeri1.jpg', caption: 'Momen Indah Kami' },
+            { src: 'images/galeri2.jpg', caption: 'Kebersamaan Kami' },
+            { src: 'images/galeri3.jpg', caption: 'Kenangan Terindah' },
+            { src: 'images/galeri4.jpg', caption: 'Cinta Kami' },
+            { src: 'images/galeri5.jpg', caption: 'Kebahagiaan Kami' },
+            { src: 'images/galeri6.jpg', caption: 'Selamanya Bersama' }
         ];
 
         let currentImageIndex = 0;
@@ -3604,7 +4274,6 @@
             
             const imageData = galleryImages[currentImageIndex];
             
-            // Efek fade out lalu fade in
             img.style.opacity = '0';
             setTimeout(() => {
                 img.src = imageData.src;
@@ -3632,14 +4301,12 @@
             updateLightboxImage();
         }
 
-        // Klik di luar konten untuk close
         document.getElementById('lightbox').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeLightbox();
             }
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.classList.contains('active')) {
