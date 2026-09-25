@@ -1567,7 +1567,7 @@
         .divider-icon { color: var(--gold); font-size: 1.2rem; }
 
         /* ============================================================
-           PROFILE SECTION - SPEKTAKULER
+           PROFILE SECTION - SPEKTAKULER (TANPA RING BERPUTAR)
            ============================================================ */
         .profile-section {
             background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
@@ -1827,12 +1827,12 @@
         }
 
         /* ============================================================
-           PROFILE PHOTO - PERSEGI EMPAT (ROUNDED SQUARE)
+           PROFILE PHOTO - PERSEGI EMPAT (TANPA RING BERPUTAR)
            ============================================================ */
         .profile-photo {
             width: 200px;
             height: 240px;
-            border-radius: 20px; /* ← Sudut melengkung persegi */
+            border-radius: 20px;
             margin: 0 auto 30px;
             position: relative;
             z-index: 2;
@@ -1846,7 +1846,7 @@
             transition: all 0.6s;
         }
 
-        /* Ring emas berputar - persegi empat */
+        /* HAPUS RING EMAS BERPUTAR - hanya sisakan glow lembut */
         .profile-photo::before {
             content: '';
             position: absolute;
@@ -1855,44 +1855,43 @@
             right: -10px;
             bottom: -10px;
             border-radius: 26px;
-            background: conic-gradient(
-                from 0deg,
-                var(--gold),
-                var(--light-gold),
-                var(--dark-gold),
-                var(--light-gold),
-                var(--gold)
-            );
-            animation: ringRotate 8s linear infinite;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.4), 
+                rgba(244, 229, 161, 0.3),
+                rgba(212, 175, 55, 0.4));
             z-index: -1;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+            filter: blur(8px);
+            opacity: 0.7;
+            transition: all 0.6s;
         }
 
-        @keyframes ringRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Ring kedua putus-putus - persegi empat */
+        /* Ring putus-putus DIHAPUS - tidak ada animasi */
         .profile-photo::after {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            border-radius: 30px;
-            border: 2px dashed rgba(212, 175, 55, 0.5);
-            animation: ringRotateReverse 12s linear infinite;
+            top: -14px;
+            left: -14px;
+            right: -14px;
+            bottom: -14px;
+            border-radius: 28px;
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
             z-index: -1;
+            opacity: 0.6;
+            transition: all 0.6s;
         }
 
-        @keyframes ringRotateReverse {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
+        .profile-card:hover .profile-photo::before {
+            filter: blur(15px);
+            opacity: 1;
+            transform: scale(1.05);
         }
 
-        /* Wrapper foto untuk menjaga bentuk persegi dan crop gambar */
+        .profile-card:hover .profile-photo::after {
+            border-color: var(--gold);
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
         .profile-photo-inner {
             width: 100%;
             height: 100%;
@@ -1963,11 +1962,6 @@
 
         .profile-card:hover .profile-photo {
             transform: scale(1.08);
-        }
-
-        .profile-card:hover .profile-photo::before {
-            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.9));
-            animation-duration: 3s;
         }
 
         .profile-card:hover .profile-photo-ornament {
@@ -2165,11 +2159,11 @@
             }
             
             .profile-photo::after {
-                top: -16px;
-                left: -16px;
-                right: -16px;
-                bottom: -16px;
-                border-radius: 26px;
+                top: -12px;
+                left: -12px;
+                right: -12px;
+                bottom: -12px;
+                border-radius: 24px;
             }
             
             .profile-photo-ornament {
@@ -3745,11 +3739,11 @@
                     </div>
                 </div>
 
-                <div class="couple-name">Sumandiyah</div>
+                <div class="couple-name">Sumandiyah, S. Pd.Gr.</div>
                 <span class="ampersand">&</span>
-                <div class="couple-name">Suheri</div>
+                <div class="couple-name">Suheri, S. Pd.Gr.</div>
                 <div class="cover-date">
-                    <i class="fas fa-calendar-alt"></i> Sabtu, 15 Maret 2025
+                    <i class="fas fa-calendar-alt"></i> Sabtu, 20 Desember 2026
                 </div>
             </div>
             <div class="scroll-indicator" onclick="scrollToSection('profile')">
@@ -3757,7 +3751,7 @@
             </div>
         </section>
 
-        <!-- ============ PROFILE SECTION - PERSEGI EMPAT ============ -->
+        <!-- ============ PROFILE SECTION - TANPA RING BERPUTAR ============ -->
         <section class="profile-section islamic-pattern" id="profile">
             <h2 class="section-title fade-in">Mempelai</h2>
             
@@ -3790,13 +3784,13 @@
                         <span class="profile-photo-ornament br">❁</span>
                         
                         <div class="profile-photo-inner">
-                            <img src="20260413_102721.jpg" 
+                            <img src="images/foto-sumandiyah.jpg" 
                                  alt="Sumandiyah"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <i class="fas fa-user" style="display: none;"></i>
                         </div>
                     </div>
-                    <h3 class="profile-name">Sumandiyah</h3>
+                    <h3 class="profile-name">Sumandiyah, S. Pd.Gr.</h3>
                     
                     <div class="profile-name-line">
                         <span class="mini-line"></span>
@@ -3830,13 +3824,13 @@
                         <span class="profile-photo-ornament br">❁</span>
                         
                         <div class="profile-photo-inner">
-                            <img src="WhatsApp Image 2026-07-02 at 15.17.50.jpeg" 
+                            <img src="images/foto-suheri.jpg" 
                                  alt="Suheri"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <i class="fas fa-user" style="display: none;"></i>
                         </div>
                     </div>
-                    <h3 class="profile-name">Suheri</h3>
+                    <h3 class="profile-name">Suheri, S. Pd.Gr.</h3>
                     
                     <div class="profile-name-line">
                         <span class="mini-line"></span>
