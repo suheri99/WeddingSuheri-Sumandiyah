@@ -1351,17 +1351,282 @@
             margin: 5px 0;
         }
 
-        .cover-date {
+        /* ============ COUNTDOWN TIMER ELEGAN ============ */
+        .cover-date-wrapper {
             margin-top: 30px;
-            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .cover-date {
+            font-size: 1.15rem;
             color: var(--text-dark);
-            letter-spacing: 3px;
-            padding: 12px 30px;
+            letter-spacing: 4px;
+            padding: 14px 45px;
             border-top: 1px solid var(--gold);
             border-bottom: 1px solid var(--gold);
             display: inline-block;
             font-family: 'Playfair Display', serif;
-            background: rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(253,251,245,0.9));
+            position: relative;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .cover-date::before,
+        .cover-date::after {
+            content: '❁';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .cover-date::before { left: 15px; }
+        .cover-date::after { right: 15px; }
+
+        .cover-date i {
+            color: var(--gold);
+            margin-right: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .countdown-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-top: 5px;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .countdown-label::before,
+        .countdown-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .countdown-label::before { left: -35px; }
+        .countdown-label::after { right: -35px; }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(253,251,245,0.98));
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 50px rgba(212, 175, 55, 0.2),
+                0 0 0 1px rgba(212, 175, 55, 0.1) inset,
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            backdrop-filter: blur(15px);
+        }
+
+        .countdown-timer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            border-radius: 2px;
+        }
+
+        .countdown-timer::after {
+            content: '✦';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cream);
+            color: var(--gold);
+            padding: 0 12px;
+            font-size: 1rem;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 75px;
+            padding: 12px 8px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.03));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 14px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 50%, var(--gold) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShimmer 3s linear infinite;
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
+            min-width: 2.5ch;
+            text-align: center;
+        }
+
+        .countdown-label-item {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--text-soft);
+            text-transform: uppercase;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .countdown-separator {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            animation: pulseColon 1s ease-in-out infinite;
+            opacity: 0.7;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+
+        @keyframes pulseColon {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .countdown-days-highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .cover-date {
+                font-size: 0.95rem;
+                letter-spacing: 3px;
+                padding: 12px 35px;
+            }
+            .cover-date::before { left: 10px; }
+            .cover-date::after { right: 10px; }
+            
+            .countdown-timer {
+                padding: 18px 15px;
+                gap: 8px;
+            }
+            
+            .countdown-item {
+                min-width: 62px;
+                padding: 10px 6px;
+                border-radius: 12px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label-item {
+                font-size: 0.5rem;
+                letter-spacing: 1px;
+            }
+            
+            .countdown-separator {
+                font-size: 1.3rem;
+                margin-bottom: 14px;
+            }
+            
+            .countdown-label {
+                font-size: 0.65rem;
+                letter-spacing: 4px;
+            }
+            
+            .countdown-label::before,
+            .countdown-label::after {
+                width: 25px;
+            }
+            .countdown-label::before { left: -22px; }
+            .countdown-label::after { right: -22px; }
+        }
+
+        @media (max-width: 480px) {
+            .cover-date {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+                padding: 10px 28px;
+            }
+            .cover-date::before,
+            .cover-date::after {
+                font-size: 0.7rem;
+            }
+            .cover-date::before { left: 8px; }
+            .cover-date::after { right: 8px; }
+            
+            .countdown-timer {
+                padding: 15px 10px;
+                gap: 5px;
+                border-radius: 16px;
+            }
+            
+            .countdown-item {
+                min-width: 54px;
+                padding: 8px 4px;
+                border-radius: 10px;
+            }
+            
+            .countdown-number {
+                font-size: 1.25rem;
+            }
+            
+            .countdown-label-item {
+                font-size: 0.45rem;
+                letter-spacing: 0.5px;
+                margin-top: 4px;
+            }
+            
+            .countdown-separator {
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
+            
+            .countdown-label {
+                font-size: 0.6rem;
+                letter-spacing: 3px;
+            }
+            
+            .countdown-label::before,
+            .countdown-label::after {
+                width: 18px;
+            }
+            .countdown-label::before { left: -16px; }
+            .countdown-label::after { right: -16px; }
         }
 
         .scroll-indicator {
@@ -1567,7 +1832,7 @@
         .divider-icon { color: var(--gold); font-size: 1.2rem; }
 
         /* ============================================================
-           PROFILE SECTION - SPEKTAKULER (TANPA RING BERPUTAR)
+           PROFILE SECTION - SPEKTAKULER
            ============================================================ */
         .profile-section {
             background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
@@ -1826,9 +2091,6 @@
             transform: translate(0, 0);
         }
 
-        /* ============================================================
-           PROFILE PHOTO - PERSEGI EMPAT (TANPA RING BERPUTAR)
-           ============================================================ */
         .profile-photo {
             width: 200px;
             height: 240px;
@@ -1846,7 +2108,6 @@
             transition: all 0.6s;
         }
 
-        /* HAPUS RING EMAS BERPUTAR - hanya sisakan glow lembut */
         .profile-photo::before {
             content: '';
             position: absolute;
@@ -1865,7 +2126,6 @@
             transition: all 0.6s;
         }
 
-        /* Ring putus-putus DIHAPUS - tidak ada animasi */
         .profile-photo::after {
             content: '';
             position: absolute;
@@ -1928,7 +2188,6 @@
             font-size: 4.5rem;
         }
 
-        /* Ornamen bunga di 4 sudut foto */
         .profile-photo-ornament {
             position: absolute;
             font-size: 1.2rem;
@@ -2292,7 +2551,9 @@
             box-shadow: 0 10px 25px var(--shadow-gold);
         }
 
-        /* ============ GALLERY SECTION ============ */
+        /* ============================================================
+           GALLERY SECTION
+           ============================================================ */
         .gallery-section {
             background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
             position: relative;
@@ -2315,7 +2576,7 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 30px;
             max-width: 1100px;
             width: 100%;
             position: relative;
@@ -2324,196 +2585,163 @@
 
         .gallery-item {
             aspect-ratio: 1;
-            border-radius: 20px;
-            overflow: hidden;
+            border-radius: 8px;
+            overflow: visible;
             position: relative;
             cursor: pointer;
-            border: 3px solid rgba(212, 175, 55, 0.4);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            background: linear-gradient(135deg, var(--white), var(--cream));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--gold);
+            background: var(--white);
+            padding: 12px;
+            transition: all 0.5s ease;
             box-shadow: 
-                0 10px 40px rgba(212, 175, 55, 0.2),
-                0 0 0 1px rgba(212, 175, 55, 0.1) inset;
-            transform-style: preserve-3d;
-            will-change: transform;
+                0 15px 40px rgba(212, 175, 55, 0.25),
+                0 0 0 1px rgba(212, 175, 55, 0.3) inset;
         }
 
         .gallery-item::before {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, 
-                var(--gold), 
-                var(--light-gold), 
-                var(--dark-gold), 
-                var(--gold));
-            background-size: 300% 300%;
-            border-radius: 22px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s;
-            animation: borderFlow 3s linear infinite;
-            filter: blur(8px);
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, 
+                var(--gold) 0%, 
+                var(--light-gold) 25%, 
+                var(--dark-gold) 50%, 
+                var(--light-gold) 75%, 
+                var(--gold) 100%);
+            background-size: 200% 200%;
+            z-index: -2;
+            animation: frameShine 5s ease-in-out infinite;
+            box-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.3);
         }
 
-        @keyframes borderFlow {
+        @keyframes frameShine {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-        }
-
-        .gallery-item:hover::before {
-            opacity: 1;
         }
 
         .gallery-item::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.4) 50%,
-                transparent 100%
-            );
-            transition: left 0.8s ease;
-            z-index: 2;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            border: 1.5px solid var(--gold);
+            border-radius: 6px;
+            z-index: 4;
             pointer-events: none;
+            opacity: 0.8;
+            transition: opacity 0.4s;
         }
 
         .gallery-item:hover::after {
-            left: 100%;
+            opacity: 1;
+            border-color: var(--dark-gold);
         }
 
         .gallery-item:hover {
-            transform: translateY(-15px) scale(1.03);
-            border-color: var(--gold);
+            transform: translateY(-8px);
             box-shadow: 
-                0 30px 80px rgba(212, 175, 55, 0.4),
+                0 25px 60px rgba(212, 175, 55, 0.4),
                 0 0 0 1px var(--gold) inset;
         }
 
-        .gallery-item img {
+        .gallery-image-wrapper {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            -webkit-user-drag: none;
-            user-select: none;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 1;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.15);
-        }
-
-        .gallery-item i {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            transition: all 0.5s;
+            border-radius: 4px;
+            overflow: hidden;
             position: relative;
-            z-index: 3;
-            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
-        }
-
-        .gallery-item:hover i { 
-            transform: scale(1.3) rotate(15deg);
-            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.8));
-        }
-
-        .gallery-item span {
-            font-size: 0.9rem;
-            color: var(--text-soft);
-            letter-spacing: 2px;
-            font-family: 'Playfair Display', serif;
-            position: relative;
-            z-index: 3;
-            transition: color 0.3s;
-        }
-
-        .gallery-item:hover span {
-            color: var(--gold);
-        }
-
-        .gallery-corner {
-            position: absolute;
-            font-size: 1.3rem;
-            color: var(--gold);
-            z-index: 4;
-            opacity: 0;
-            transition: all 0.5s;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-            pointer-events: none;
-        }
-
-        .gallery-corner.tl { top: 10px; left: 10px; transform: translate(-15px, -15px); }
-        .gallery-corner.tr { top: 10px; right: 10px; transform: translate(15px, -15px); }
-        .gallery-corner.bl { bottom: 10px; left: 10px; transform: translate(-15px, 15px); }
-        .gallery-corner.br { bottom: 10px; right: 10px; transform: translate(15px, 15px); }
-
-        .gallery-item:hover .gallery-corner {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-
-        .gallery-zoom-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cream), var(--soft-gold));
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--gold);
-            font-size: 1.5rem;
-            z-index: 5;
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-            backdrop-filter: blur(10px);
+        }
+
+        .gallery-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
             pointer-events: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            transition: transform 0.8s ease;
         }
 
-        .gallery-item:hover .gallery-zoom-icon {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+        .gallery-item:hover .gallery-image-wrapper img {
+            transform: scale(1.05);
         }
 
-        .gallery-touch-label {
+        .gallery-image-wrapper i {
+            font-size: 3.5rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.5));
+        }
+
+        .gallery-ornament {
+            position: absolute;
+            font-size: 1.3rem;
+            color: var(--gold);
+            z-index: 5;
+            text-shadow: 
+                0 0 10px rgba(212, 175, 55, 0.9),
+                0 0 20px rgba(212, 175, 55, 0.5);
+            pointer-events: none;
+            background: var(--cream);
+            padding: 3px;
+            line-height: 1;
+            transition: all 0.5s;
+        }
+
+        .gallery-ornament.tl { 
+            top: -14px; 
+            left: -14px; 
+            transform: rotate(-45deg); 
+        }
+        .gallery-ornament.tr { 
+            top: -14px; 
+            right: -14px; 
+            transform: rotate(45deg); 
+        }
+        .gallery-ornament.bl { 
+            bottom: -14px; 
+            left: -14px; 
+            transform: rotate(-135deg); 
+        }
+        .gallery-ornament.br { 
+            bottom: -14px; 
+            right: -14px; 
+            transform: rotate(135deg); 
+        }
+
+        .gallery-item:hover .gallery-ornament {
+            font-size: 1.5rem;
+            text-shadow: 
+                0 0 15px rgba(212, 175, 55, 1),
+                0 0 30px rgba(212, 175, 55, 0.7);
+        }
+
+        .gallery-label {
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 6;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
+            padding: 6px 16px;
             background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(212, 175, 55, 0.6);
-            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.7);
+            border-radius: 20px;
             color: var(--gold);
             font-family: 'Playfair Display', serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -2523,50 +2751,25 @@
                 0 5px 20px rgba(212, 175, 55, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
             pointer-events: none;
-            animation: touchPulse 2.5s ease-in-out infinite;
             transition: all 0.4s;
         }
 
-        .gallery-touch-label i {
-            font-size: 0.85rem;
+        .gallery-label i {
+            font-size: 0.75rem;
+            margin-right: 5px;
             animation: touchHand 1.5s ease-in-out infinite;
-            filter: none;
-            margin: 0;
-            position: static;
-        }
-
-        @keyframes touchPulse {
-            0%, 100% {
-                opacity: 0.85;
-                transform: translateX(-50%) translateY(0) scale(1);
-                box-shadow: 
-                    0 5px 20px rgba(212, 175, 55, 0.3),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(-3px) scale(1.05);
-                box-shadow: 
-                    0 8px 25px rgba(212, 175, 55, 0.5),
-                    0 0 20px rgba(212, 175, 55, 0.4),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            }
         }
 
         @keyframes touchHand {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-2px) scale(1.15);
-            }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-2px) scale(1.15); }
         }
 
-        .gallery-item:hover .gallery-touch-label {
+        .gallery-item:hover .gallery-label {
             background: linear-gradient(135deg, var(--gold), var(--dark-gold));
             color: var(--white);
             border-color: var(--light-gold);
-            transform: translateX(-50%) translateY(-5px) scale(1.08);
+            transform: translateX(-50%) translateY(-3px);
             box-shadow: 
                 0 10px 30px rgba(212, 175, 55, 0.6),
                 0 0 25px rgba(212, 175, 55, 0.5);
@@ -3433,7 +3636,45 @@
             transform: scale(1.1);
         }
 
-        .music-control.playing i { animation: musicPulse 1s infinite; }
+        /* ============ MUSIC CONTROL - PLAYING STATE (HIJAU) ============ */
+        .music-control.playing {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            border-color: #4caf50;
+            color: #ffffff;
+            box-shadow: 
+                0 5px 25px rgba(76, 175, 80, 0.6),
+                0 0 40px rgba(76, 175, 80, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: musicPlayingPulse 2s ease-in-out infinite;
+        }
+
+        .music-control.playing i {
+            color: #ffffff;
+            animation: musicPulse 1s infinite;
+        }
+
+        .music-control.playing:hover {
+            background: linear-gradient(135deg, #66bb6a, #388e3c);
+            border-color: #66bb6a;
+            box-shadow: 
+                0 8px 35px rgba(76, 175, 80, 0.8),
+                0 0 60px rgba(76, 175, 80, 0.5);
+        }
+
+        @keyframes musicPlayingPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 5px 25px rgba(76, 175, 80, 0.6),
+                    0 0 40px rgba(76, 175, 80, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 
+                    0 5px 35px rgba(76, 175, 80, 0.9),
+                    0 0 60px rgba(76, 175, 80, 0.6),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            }
+        }
 
         @keyframes musicPulse {
             0%, 100% { transform: scale(1); }
@@ -3483,12 +3724,27 @@
             .atm-card-wrapper { max-width: 100%; }
             .verse-arabic { font-size: 1.2rem; }
             .verse-translation { font-size: 0.95rem; }
-            .gallery-touch-label {
-                font-size: 0.7rem;
-                padding: 7px 15px;
-                letter-spacing: 1px;
-                bottom: 15px;
+
+            .gallery-grid {
+                gap: 25px;
             }
+
+            .gallery-item {
+                padding: 10px;
+            }
+
+            .gallery-ornament {
+                font-size: 1.1rem;
+            }
+
+            .gallery-ornament.tl,
+            .gallery-ornament.tr { top: -12px; }
+            .gallery-ornament.tl,
+            .gallery-ornament.bl { left: -12px; }
+            .gallery-ornament.tr,
+            .gallery-ornament.br { right: -12px; }
+            .gallery-ornament.bl,
+            .gallery-ornament.br { bottom: -12px; }
         }
 
         @media (max-width: 480px) {
@@ -3525,15 +3781,49 @@
             .card-network-bottom svg { width: 45px; }
             .card-network-logo { width: 40px; }
 
-            .gallery-touch-label {
-                font-size: 0.6rem;
-                padding: 6px 12px;
-                letter-spacing: 0.5px;
-                bottom: 12px;
-                gap: 5px;
+            .gallery-item {
+                padding: 8px;
             }
-            .gallery-touch-label i {
-                font-size: 0.7rem;
+
+            .gallery-item::before {
+                top: -4px;
+                left: -4px;
+                right: -4px;
+                bottom: -4px;
+                border-radius: 10px;
+            }
+
+            .gallery-item::after {
+                top: 2px;
+                left: 2px;
+                right: 2px;
+                bottom: 2px;
+                border-radius: 5px;
+            }
+
+            .gallery-ornament {
+                font-size: 1rem;
+                padding: 2px;
+            }
+
+            .gallery-ornament.tl,
+            .gallery-ornament.tr { top: -10px; }
+            .gallery-ornament.tl,
+            .gallery-ornament.bl { left: -10px; }
+            .gallery-ornament.tr,
+            .gallery-ornament.br { right: -10px; }
+            .gallery-ornament.bl,
+            .gallery-ornament.br { bottom: -10px; }
+
+            .gallery-label {
+                font-size: 0.6rem;
+                padding: 5px 12px;
+                bottom: 15px;
+                letter-spacing: 1px;
+            }
+
+            .gallery-label i {
+                font-size: 0.65rem;
             }
         }
 
@@ -3728,7 +4018,7 @@
                     <span class="frame-decoration bottom-right">❁</span>
                     
                     <div class="couple-photo-inner">
-                        <img src="images/foto-pasangan.jpg" 
+                        <img src="5.jpg" 
                              alt="Sumandiyah & Suheri" 
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         
@@ -3739,11 +4029,39 @@
                     </div>
                 </div>
 
-                <div class="couple-name">Sumandiyah, S. Pd.Gr.</div>
+                <div class="couple-name">Sumandiyah</div>
                 <span class="ampersand">&</span>
-                <div class="couple-name">Suheri, S. Pd.Gr.</div>
-                <div class="cover-date">
-                    <i class="fas fa-calendar-alt"></i> Sabtu, 20 Desember 2026
+                <div class="couple-name">Suheri</div>
+                
+                <!-- ============ COUNTDOWN TIMER ============ -->
+                <div class="cover-date-wrapper">
+                    <div class="cover-date">
+                        <i class="fas fa-calendar-alt"></i> Ahad, 20 Desember 2026
+                    </div>
+                    
+                    <div class="countdown-label">Menuju Hari Bahagia</div>
+                    
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="countdown-item countdown-days-highlight">
+                            <span class="countdown-number" id="cdDays">00</span>
+                            <span class="countdown-label-item">Hari</span>
+                        </div>
+                        <span class="countdown-separator">:</span>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="cdHours">00</span>
+                            <span class="countdown-label-item">Jam</span>
+                        </div>
+                        <span class="countdown-separator">:</span>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="cdMinutes">00</span>
+                            <span class="countdown-label-item">Menit</span>
+                        </div>
+                        <span class="countdown-separator">:</span>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="cdSeconds">00</span>
+                            <span class="countdown-label-item">Detik</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="scroll-indicator" onclick="scrollToSection('profile')">
@@ -3751,7 +4069,7 @@
             </div>
         </section>
 
-        <!-- ============ PROFILE SECTION - TANPA RING BERPUTAR ============ -->
+        <!-- ============ PROFILE SECTION ============ -->
         <section class="profile-section islamic-pattern" id="profile">
             <h2 class="section-title fade-in">Mempelai</h2>
             
@@ -3770,7 +4088,6 @@
             </div>
 
             <div class="profile-cards">
-                <!-- Mempelai Wanita -->
                 <div class="profile-card fade-in-left">
                     <span class="card-corner-ornament tl">❁</span>
                     <span class="card-corner-ornament tr">❁</span>
@@ -3784,13 +4101,13 @@
                         <span class="profile-photo-ornament br">❁</span>
                         
                         <div class="profile-photo-inner">
-                            <img src="images/foto-sumandiyah.jpg" 
+                            <img src="Diyah.jpeg" 
                                  alt="Sumandiyah"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <i class="fas fa-user" style="display: none;"></i>
                         </div>
                     </div>
-                    <h3 class="profile-name">Sumandiyah, S. Pd.Gr.</h3>
+                    <h3 class="profile-name">Sumandiyah</h3>
                     
                     <div class="profile-name-line">
                         <span class="mini-line"></span>
@@ -3805,12 +4122,10 @@
                     </p>
                 </div>
 
-                <!-- Love Icon -->
                 <div class="love-icon">
                     <i class="fas fa-heart"></i>
                 </div>
 
-                <!-- Mempelai Pria -->
                 <div class="profile-card fade-in-right">
                     <span class="card-corner-ornament tl">❁</span>
                     <span class="card-corner-ornament tr">❁</span>
@@ -3824,13 +4139,13 @@
                         <span class="profile-photo-ornament br">❁</span>
                         
                         <div class="profile-photo-inner">
-                            <img src="images/foto-suheri.jpg" 
+                            <img src="WhatsApp Image 2026-07-02 at 15.17.50.jpeg" 
                                  alt="Suheri"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <i class="fas fa-user" style="display: none;"></i>
                         </div>
                     </div>
-                    <h3 class="profile-name">Suheri, S. Pd.Gr.</h3>
+                    <h3 class="profile-name">Suheri</h3>
                     
                     <div class="profile-name-line">
                         <span class="mini-line"></span>
@@ -3865,7 +4180,7 @@
                     <h3 class="event-title">Akad Nikah</h3>
                     <div class="event-detail">
                         <div class="event-date">
-                            <i class="fas fa-calendar-alt"></i> Sabtu, 15 Maret 2025
+                            <i class="fas fa-calendar-alt"></i> Ahad, 20 Desember 2026
                         </div>
                         <div class="event-time">
                             <i class="fas fa-clock"></i> 08.00 - 10.00 WIB
@@ -3888,7 +4203,7 @@
                     <h3 class="event-title">Resepsi</h3>
                     <div class="event-detail">
                         <div class="event-date">
-                            <i class="fas fa-calendar-alt"></i> Sabtu, 15 Maret 2025
+                            <i class="fas fa-calendar-alt"></i> Ahad, 20 Desember 2026
                         </div>
                         <div class="event-time">
                             <i class="fas fa-clock"></i> 11.00 - 14.00 WIB
@@ -3918,98 +4233,92 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item fade-in" onclick="openLightbox(1)">
-                    <img src="images/galeri1.jpg" alt="Galeri 1" onerror="this.style.display='none';">
-                    <i class="fas fa-image"></i>
-                    <span class="gallery-corner tl">❁</span>
-                    <span class="gallery-corner tr">❁</span>
-                    <span class="gallery-corner bl">❁</span>
-                    <span class="gallery-corner br">❁</span>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
+                    <span class="gallery-ornament tl">❁</span>
+                    <span class="gallery-ornament tr">❁</span>
+                    <span class="gallery-ornament bl">❁</span>
+                    <span class="gallery-ornament br">❁</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="images/galeri1.jpg" alt="Galeri 1" onerror="this.style.display='none';">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <div class="gallery-touch-label">
+                    <div class="gallery-label">
                         <i class="fas fa-hand-pointer"></i>
-                        <span>Sentuh untuk Melihat</span>
+                        Sentuh untuk Melihat
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in" onclick="openLightbox(2)">
-                    <img src="images/galeri2.jpg" alt="Galeri 2" onerror="this.style.display='none';">
-                    <i class="fas fa-image"></i>
-                    <span class="gallery-corner tl">❁</span>
-                    <span class="gallery-corner tr">❁</span>
-                    <span class="gallery-corner bl">❁</span>
-                    <span class="gallery-corner br">❁</span>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
+                    <span class="gallery-ornament tl">❁</span>
+                    <span class="gallery-ornament tr">❁</span>
+                    <span class="gallery-ornament bl">❁</span>
+                    <span class="gallery-ornament br">❁</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="images/galeri2.jpg" alt="Galeri 2" onerror="this.style.display='none';">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <div class="gallery-touch-label">
+                    <div class="gallery-label">
                         <i class="fas fa-hand-pointer"></i>
-                        <span>Sentuh untuk Melihat</span>
+                        Sentuh untuk Melihat
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in" onclick="openLightbox(3)">
-                    <img src="images/galeri3.jpg" alt="Galeri 3" onerror="this.style.display='none';">
-                    <i class="fas fa-image"></i>
-                    <span class="gallery-corner tl">❁</span>
-                    <span class="gallery-corner tr">❁</span>
-                    <span class="gallery-corner bl">❁</span>
-                    <span class="gallery-corner br">❁</span>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
+                    <span class="gallery-ornament tl">❁</span>
+                    <span class="gallery-ornament tr">❁</span>
+                    <span class="gallery-ornament bl">❁</span>
+                    <span class="gallery-ornament br">❁</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="images/galeri3.jpg" alt="Galeri 3" onerror="this.style.display='none';">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <div class="gallery-touch-label">
+                    <div class="gallery-label">
                         <i class="fas fa-hand-pointer"></i>
-                        <span>Sentuh untuk Melihat</span>
+                        Sentuh untuk Melihat
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in" onclick="openLightbox(4)">
-                    <img src="images/galeri4.jpg" alt="Galeri 4" onerror="this.style.display='none';">
-                    <i class="fas fa-image"></i>
-                    <span class="gallery-corner tl">❁</span>
-                    <span class="gallery-corner tr">❁</span>
-                    <span class="gallery-corner bl">❁</span>
-                    <span class="gallery-corner br">❁</span>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
+                    <span class="gallery-ornament tl">❁</span>
+                    <span class="gallery-ornament tr">❁</span>
+                    <span class="gallery-ornament bl">❁</span>
+                    <span class="gallery-ornament br">❁</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="images/galeri4.jpg" alt="Galeri 4" onerror="this.style.display='none';">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <div class="gallery-touch-label">
+                    <div class="gallery-label">
                         <i class="fas fa-hand-pointer"></i>
-                        <span>Sentuh untuk Melihat</span>
+                        Sentuh untuk Melihat
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in" onclick="openLightbox(5)">
-                    <img src="images/galeri5.jpg" alt="Galeri 5" onerror="this.style.display='none';">
-                    <i class="fas fa-image"></i>
-                    <span class="gallery-corner tl">❁</span>
-                    <span class="gallery-corner tr">❁</span>
-                    <span class="gallery-corner bl">❁</span>
-                    <span class="gallery-corner br">❁</span>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
+                    <span class="gallery-ornament tl">❁</span>
+                    <span class="gallery-ornament tr">❁</span>
+                    <span class="gallery-ornament bl">❁</span>
+                    <span class="gallery-ornament br">❁</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="images/galeri5.jpg" alt="Galeri 5" onerror="this.style.display='none';">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <div class="gallery-touch-label">
+                    <div class="gallery-label">
                         <i class="fas fa-hand-pointer"></i>
-                        <span>Sentuh untuk Melihat</span>
+                        Sentuh untuk Melihat
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in" onclick="openLightbox(6)">
-                    <img src="images/galeri6.jpg" alt="Galeri 6" onerror="this.style.display='none';">
-                    <i class="fas fa-image"></i>
-                    <span class="gallery-corner tl">❁</span>
-                    <span class="gallery-corner tr">❁</span>
-                    <span class="gallery-corner bl">❁</span>
-                    <span class="gallery-corner br">❁</span>
-                    <div class="gallery-zoom-icon">
-                        <i class="fas fa-search-plus"></i>
+                    <span class="gallery-ornament tl">❁</span>
+                    <span class="gallery-ornament tr">❁</span>
+                    <span class="gallery-ornament bl">❁</span>
+                    <span class="gallery-ornament br">❁</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="images/galeri6.jpg" alt="Galeri 6" onerror="this.style.display='none';">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <div class="gallery-touch-label">
+                    <div class="gallery-label">
                         <i class="fas fa-hand-pointer"></i>
-                        <span>Sentuh untuk Melihat</span>
+                        Sentuh untuk Melihat
                     </div>
                 </div>
             </div>
@@ -4189,7 +4498,7 @@
 
     <!-- ============ AUDIO ============ -->
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="Music Background.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -4233,15 +4542,59 @@
         }
 
         // ============================================================
+        // COUNTDOWN TIMER MENUJU 20 DESEMBER 2026
+        // ============================================================
+        function initCountdown() {
+            const targetDate = new Date('2026-12-20T08:00:00+07:00').getTime();
+            
+            const cdDays = document.getElementById('cdDays');
+            const cdHours = document.getElementById('cdHours');
+            const cdMinutes = document.getElementById('cdMinutes');
+            const cdSeconds = document.getElementById('cdSeconds');
+            
+            if (!cdDays) return;
+            
+            function padZero(num) {
+                return num < 10 ? '0' + num : num.toString();
+            }
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                
+                if (distance < 0) {
+                    cdDays.textContent = '00';
+                    cdHours.textContent = '00';
+                    cdMinutes.textContent = '00';
+                    cdSeconds.textContent = '00';
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                cdDays.textContent = padZero(days);
+                cdHours.textContent = padZero(hours);
+                cdMinutes.textContent = padZero(minutes);
+                cdSeconds.textContent = padZero(seconds);
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // ============================================================
         // LIGHTBOX GALERI
         // ============================================================
         const galleryImages = [
-            { src: 'images/galeri1.jpg', caption: 'Momen Indah Kami' },
-            { src: 'images/galeri2.jpg', caption: 'Kebersamaan Kami' },
-            { src: 'images/galeri3.jpg', caption: 'Kenangan Terindah' },
-            { src: 'images/galeri4.jpg', caption: 'Cinta Kami' },
-            { src: 'images/galeri5.jpg', caption: 'Kebahagiaan Kami' },
-            { src: 'images/galeri6.jpg', caption: 'Selamanya Bersama' }
+            { src: '1.jpg', caption: 'Momen Indah Kami' },
+            { src: '2.jpg', caption: 'Kebersamaan Kami' },
+            { src: '3.jpg', caption: 'Kenangan Terindah' },
+            { src: '4.jpg', caption: 'Cinta Kami' },
+            { src: '5.jpg', caption: 'Kebahagiaan Kami' },
+            { src: '6.jpg', caption: 'Selamanya Bersama' }
         ];
 
         let currentImageIndex = 0;
@@ -4313,33 +4666,6 @@
                 }
             }
         });
-
-        // ============================================================
-        // EFEK 3D TILT PADA GALERI
-        // ============================================================
-        function initGalleryTilt() {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            galleryItems.forEach(item => {
-                item.addEventListener('mousemove', (e) => {
-                    const rect = item.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateX = ((y - centerY) / centerY) * -8;
-                    const rotateY = ((x - centerX) / centerX) * 8;
-                    
-                    item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px) scale(1.03)`;
-                });
-                
-                item.addEventListener('mouseleave', () => {
-                    item.style.transform = '';
-                });
-            });
-        }
 
         // ============================================================
         // EFEK SHOOTING STAR
@@ -4509,10 +4835,10 @@
 
             setTimeout(() => {
                 initScrollAnimations();
-                initGalleryTilt();
                 loadWishes();
                 createParticles();
                 startShootingStars();
+                initCountdown();
             }, 2500);
         });
 
