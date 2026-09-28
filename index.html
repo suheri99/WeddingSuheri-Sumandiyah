@@ -1832,7 +1832,7 @@
         .divider-icon { color: var(--gold); font-size: 1.2rem; }
 
         /* ============================================================
-           PROFILE SECTION - SPEKTAKULER
+           PROFILE SECTION
            ============================================================ */
         .profile-section {
             background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
@@ -2552,7 +2552,7 @@
         }
 
         /* ============================================================
-           GALLERY SECTION
+           GALLERY SECTION - TANPA SLIDE/LIGHTBOX
            ============================================================ */
         .gallery-section {
             background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
@@ -2588,7 +2588,7 @@
             border-radius: 8px;
             overflow: visible;
             position: relative;
-            cursor: pointer;
+            cursor: default;
             background: var(--white);
             padding: 12px;
             transition: all 0.5s ease;
@@ -2678,14 +2678,6 @@
             transform: scale(1.05);
         }
 
-        .gallery-image-wrapper i {
-            font-size: 3.5rem;
-            color: var(--gold);
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.5));
-        }
-
         .gallery-ornament {
             position: absolute;
             font-size: 1.3rem;
@@ -2727,309 +2719,6 @@
             text-shadow: 
                 0 0 15px rgba(212, 175, 55, 1),
                 0 0 30px rgba(212, 175, 55, 0.7);
-        }
-
-        .gallery-label {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 6;
-            padding: 6px 16px;
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(212, 175, 55, 0.7);
-            border-radius: 20px;
-            color: var(--gold);
-            font-family: 'Playfair Display', serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            white-space: nowrap;
-            backdrop-filter: blur(10px);
-            box-shadow: 
-                0 5px 20px rgba(212, 175, 55, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            transition: all 0.4s;
-        }
-
-        .gallery-label i {
-            font-size: 0.75rem;
-            margin-right: 5px;
-            animation: touchHand 1.5s ease-in-out infinite;
-        }
-
-        @keyframes touchHand {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-2px) scale(1.15); }
-        }
-
-        .gallery-item:hover .gallery-label {
-            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
-            color: var(--white);
-            border-color: var(--light-gold);
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 
-                0 10px 30px rgba(212, 175, 55, 0.6),
-                0 0 25px rgba(212, 175, 55, 0.5);
-        }
-
-        /* ============ LIGHTBOX MODAL ============ */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(15px);
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s;
-            padding: 20px;
-        }
-
-        .lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform: scale(0.7) translateY(30px);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .lightbox.active .lightbox-content {
-            transform: scale(1) translateY(0);
-        }
-
-        .lightbox-frame {
-            position: relative;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--gold), var(--dark-gold), var(--gold));
-            background-size: 200% 200%;
-            border-radius: 15px;
-            box-shadow: 
-                0 0 60px rgba(212, 175, 55, 0.6),
-                0 0 100px rgba(212, 175, 55, 0.3),
-                inset 0 0 30px rgba(255, 255, 255, 0.2);
-            animation: goldShine 4s ease-in-out infinite;
-            max-width: 100%;
-        }
-
-        @keyframes goldShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .lightbox-frame::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
-            bottom: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            pointer-events: none;
-        }
-
-        .lightbox-frame-ornament {
-            position: absolute;
-            font-size: 1.8rem;
-            color: var(--light-gold);
-            z-index: 10;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            animation: ornamentRotate 6s linear infinite;
-        }
-
-        .lightbox-frame-ornament.tl { top: -15px; left: -15px; }
-        .lightbox-frame-ornament.tr { top: -15px; right: -15px; }
-        .lightbox-frame-ornament.bl { bottom: -15px; left: -15px; }
-        .lightbox-frame-ornament.br { bottom: -15px; right: -15px; }
-
-        @keyframes ornamentRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .lightbox-image-wrapper {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            background: var(--white);
-            max-width: 100%;
-        }
-
-        .lightbox-image-wrapper img {
-            display: block;
-            max-width: 100%;
-            max-height: 70vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        .lightbox-info {
-            margin-top: 20px;
-            text-align: center;
-            color: var(--white);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .lightbox-counter {
-            font-size: 1rem;
-            letter-spacing: 3px;
-            color: var(--gold);
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .lightbox-counter .current {
-            color: var(--light-gold);
-            font-size: 1.2rem;
-        }
-
-        .lightbox-counter .separator {
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 300;
-        }
-
-        .lightbox-counter .total {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .lightbox-caption {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
-            letter-spacing: 1px;
-        }
-
-        .lightbox-close {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--gold);
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            z-index: 10;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .lightbox-close:hover {
-            background: var(--gold);
-            color: var(--white);
-            transform: rotate(90deg) scale(1.1);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
-        }
-
-        .lightbox-nav {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 55px;
-            height: 55px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--gold);
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            z-index: 10;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .lightbox-nav.prev { left: 25px; }
-        .lightbox-nav.next { right: 25px; }
-
-        .lightbox-nav:hover {
-            background: var(--gold);
-            color: var(--white);
-            transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
-        }
-
-        .lightbox-nav:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-
-        @media (max-width: 768px) {
-            .lightbox-frame { padding: 10px; }
-            .lightbox-image-wrapper img { max-height: 60vh; }
-            .lightbox-close {
-                top: 15px; right: 15px;
-                width: 45px; height: 45px;
-                font-size: 1.1rem;
-            }
-            .lightbox-nav {
-                width: 45px; height: 45px;
-                font-size: 1.1rem;
-            }
-            .lightbox-nav.prev { left: 15px; }
-            .lightbox-nav.next { right: 15px; }
-            .lightbox-frame-ornament { font-size: 1.3rem; }
-            .lightbox-frame-ornament.tl,
-            .lightbox-frame-ornament.tr { top: -10px; }
-            .lightbox-frame-ornament.tl,
-            .lightbox-frame-ornament.bl { left: -10px; }
-            .lightbox-frame-ornament.tr,
-            .lightbox-frame-ornament.br { right: -10px; }
-            .lightbox-frame-ornament.bl,
-            .lightbox-frame-ornament.br { bottom: -10px; }
-        }
-
-        @media (max-width: 480px) {
-            .lightbox { padding: 10px; }
-            .lightbox-frame { padding: 8px; border-radius: 12px; }
-            .lightbox-image-wrapper img { max-height: 55vh; }
-            .lightbox-close {
-                top: 10px; right: 10px;
-                width: 40px; height: 40px;
-                font-size: 1rem;
-            }
-            .lightbox-nav {
-                width: 40px; height: 40px;
-                font-size: 1rem;
-            }
-            .lightbox-nav.prev { left: 10px; }
-            .lightbox-nav.next { right: 10px; }
-            .lightbox-counter { font-size: 0.85rem; }
-            .lightbox-counter .current { font-size: 1rem; }
-            .lightbox-caption { font-size: 0.75rem; }
         }
 
         /* ============ DONATION SECTION ============ */
@@ -3814,17 +3503,6 @@
             .gallery-ornament.br { right: -10px; }
             .gallery-ornament.bl,
             .gallery-ornament.br { bottom: -10px; }
-
-            .gallery-label {
-                font-size: 0.6rem;
-                padding: 5px 12px;
-                bottom: 15px;
-                letter-spacing: 1px;
-            }
-
-            .gallery-label i {
-                font-size: 0.65rem;
-            }
         }
 
         /* ============ FLOATING PARTICLES ============ */
@@ -3927,38 +3605,6 @@
         </div>
     </div>
 
-    <!-- ============ LIGHTBOX MODAL ============ -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-close" onclick="closeLightbox()">
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="lightbox-nav prev" onclick="navigateLightbox(-1)">
-            <i class="fas fa-chevron-left"></i>
-        </div>
-        <div class="lightbox-content">
-            <div class="lightbox-frame">
-                <span class="lightbox-frame-ornament tl">❁</span>
-                <span class="lightbox-frame-ornament tr">❁</span>
-                <span class="lightbox-frame-ornament bl">❁</span>
-                <span class="lightbox-frame-ornament br">❁</span>
-                <div class="lightbox-image-wrapper">
-                    <img id="lightboxImage" src="" alt="Foto Galeri">
-                </div>
-            </div>
-            <div class="lightbox-info">
-                <div class="lightbox-counter">
-                    <span class="current" id="lightboxCurrent">1</span>
-                    <span class="separator">/</span>
-                    <span class="total" id="lightboxTotal">6</span>
-                </div>
-                <div class="lightbox-caption" id="lightboxCaption">Momen Indah Kami</div>
-            </div>
-        </div>
-        <div class="lightbox-nav next" onclick="navigateLightbox(1)">
-            <i class="fas fa-chevron-right"></i>
-        </div>
-    </div>
-
     <!-- ============ MAIN CONTENT ============ -->
     <div class="main-content" id="mainContent">
 
@@ -4018,20 +3664,14 @@
                     <span class="frame-decoration bottom-right">❁</span>
                     
                     <div class="couple-photo-inner">
-                        <img src="5.jpg" 
-                             alt="Sumandiyah & Suheri" 
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        
-                        <div class="photo-locked" style="display: none;">
-                            <i class="fas fa-heart"></i>
-                            <span>SUMANDIYAH & SUHERI</span>
-                        </div>
+                        <img src="IMG-20260718-WA0019.jpg" 
+                             alt="Sumandiyah & Suheri">
                     </div>
                 </div>
 
-                <div class="couple-name">Sumandiyah</div>
+                <div class="couple-name">Sumandiyah, S.Pd.Gr.</div>
                 <span class="ampersand">&</span>
-                <div class="couple-name">Suheri</div>
+                <div class="couple-name">Suheri, S.Pd.Gr.</div>
                 
                 <!-- ============ COUNTDOWN TIMER ============ -->
                 <div class="cover-date-wrapper">
@@ -4102,9 +3742,7 @@
                         
                         <div class="profile-photo-inner">
                             <img src="Diyah.jpeg" 
-                                 alt="Sumandiyah"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <i class="fas fa-user" style="display: none;"></i>
+                                 alt="Sumandiyah">
                         </div>
                     </div>
                     <h3 class="profile-name">Sumandiyah</h3>
@@ -4117,7 +3755,7 @@
                     
                     <p class="profile-desc">
                         Putri dari<br>
-                        <strong>Bapak Ahmad</strong> & <strong>Ibu Siti</strong><br>
+                        <strong>(Alm) Bapak Purwanto</strong> & <strong>Ibu Erniyati</strong><br>
                         <em>"Semoga Allah memberkahi pernikahan ini"</em>
                     </p>
                 </div>
@@ -4140,9 +3778,7 @@
                         
                         <div class="profile-photo-inner">
                             <img src="WhatsApp Image 2026-07-02 at 15.17.50.jpeg" 
-                                 alt="Suheri"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <i class="fas fa-user" style="display: none;"></i>
+                                 alt="Suheri">
                         </div>
                     </div>
                     <h3 class="profile-name">Suheri</h3>
@@ -4155,7 +3791,7 @@
                     
                     <p class="profile-desc">
                         Putra dari<br>
-                        <strong>Bapak Haji</strong> & <strong>Ibu Hajjah</strong><br>
+                        <strong>(Alm) Bapak Hamsar</strong> & <strong>Ibu Sapurah</strong><br>
                         <em>"Semoga Allah memberkahi pernikahan ini"</em>
                     </p>
                 </div>
@@ -4187,8 +3823,8 @@
                         </div>
                         <div class="event-location">
                             <i class="fas fa-map-marker-alt"></i><br>
-                            Masjid Al-Ikhlas<br>
-                            Jl. Raya Utama No. 123, Jakarta
+                            Kediaman Memepelai Wanita<br>
+                            SP 6, Jalur 9, Desa Sari Makmur
                         </div>
                         <a href="#" class="map-btn" onclick="alert('Buka Google Maps')">
                             <i class="fas fa-map"></i> Lihat Lokasi
@@ -4210,8 +3846,8 @@
                         </div>
                         <div class="event-location">
                             <i class="fas fa-map-marker-alt"></i><br>
-                            Gedung Serbaguna Al-Barokah<br>
-                            Jl. Raya Utama No. 125, Jakarta
+                            Kediaman Mempelai Wanita<br>
+                            SP 6, Jalur 9, Desa Sari Makmur
                         </div>
                         <a href="#" class="map-btn" onclick="alert('Buka Google Maps')">
                             <i class="fas fa-map"></i> Lihat Lokasi
@@ -4221,7 +3857,7 @@
             </div>
         </section>
 
-        <!-- ============ GALLERY SECTION ============ -->
+        <!-- ============ GALLERY SECTION - TANPA SLIDE ============ -->
         <section class="gallery-section islamic-pattern" id="gallery">
             <h2 class="section-title fade-in">Galeri</h2>
             <p class="section-subtitle fade-in">Momen indah kami</p>
@@ -4232,93 +3868,69 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item fade-in" onclick="openLightbox(1)">
+                <!-- Foto 1 -->
+                <div class="gallery-item fade-in">
                     <span class="gallery-ornament tl">❁</span>
                     <span class="gallery-ornament tr">❁</span>
                     <span class="gallery-ornament bl">❁</span>
                     <span class="gallery-ornament br">❁</span>
                     <div class="gallery-image-wrapper">
-                        <img src="images/galeri1.jpg" alt="Galeri 1" onerror="this.style.display='none';">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="gallery-label">
-                        <i class="fas fa-hand-pointer"></i>
-                        Sentuh untuk Melihat
+                        <img src="1.jpg" alt="Galeri 1">
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox(2)">
+                <!-- Foto 2 -->
+                <div class="gallery-item fade-in">
                     <span class="gallery-ornament tl">❁</span>
                     <span class="gallery-ornament tr">❁</span>
                     <span class="gallery-ornament bl">❁</span>
                     <span class="gallery-ornament br">❁</span>
                     <div class="gallery-image-wrapper">
-                        <img src="images/galeri2.jpg" alt="Galeri 2" onerror="this.style.display='none';">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="gallery-label">
-                        <i class="fas fa-hand-pointer"></i>
-                        Sentuh untuk Melihat
+                        <img src="2.jpg" alt="Galeri 2">
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox(3)">
+                <!-- Foto 3 -->
+                <div class="gallery-item fade-in">
                     <span class="gallery-ornament tl">❁</span>
                     <span class="gallery-ornament tr">❁</span>
                     <span class="gallery-ornament bl">❁</span>
                     <span class="gallery-ornament br">❁</span>
                     <div class="gallery-image-wrapper">
-                        <img src="images/galeri3.jpg" alt="Galeri 3" onerror="this.style.display='none';">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="gallery-label">
-                        <i class="fas fa-hand-pointer"></i>
-                        Sentuh untuk Melihat
+                        <img src="3.jpg" alt="Galeri 3">
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox(4)">
+                <!-- Foto 4 -->
+                <div class="gallery-item fade-in">
                     <span class="gallery-ornament tl">❁</span>
                     <span class="gallery-ornament tr">❁</span>
                     <span class="gallery-ornament bl">❁</span>
                     <span class="gallery-ornament br">❁</span>
                     <div class="gallery-image-wrapper">
-                        <img src="images/galeri4.jpg" alt="Galeri 4" onerror="this.style.display='none';">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="gallery-label">
-                        <i class="fas fa-hand-pointer"></i>
-                        Sentuh untuk Melihat
+                        <img src="4.jpg" alt="Galeri 4">
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox(5)">
+                <!-- Foto 5 -->
+                <div class="gallery-item fade-in">
                     <span class="gallery-ornament tl">❁</span>
                     <span class="gallery-ornament tr">❁</span>
                     <span class="gallery-ornament bl">❁</span>
                     <span class="gallery-ornament br">❁</span>
                     <div class="gallery-image-wrapper">
-                        <img src="images/galeri5.jpg" alt="Galeri 5" onerror="this.style.display='none';">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="gallery-label">
-                        <i class="fas fa-hand-pointer"></i>
-                        Sentuh untuk Melihat
+                        <img src="5.jpg" alt="Galeri 5">
                     </div>
                 </div>
 
-                <div class="gallery-item fade-in" onclick="openLightbox(6)">
+                <!-- Foto 6 -->
+                <div class="gallery-item fade-in">
                     <span class="gallery-ornament tl">❁</span>
                     <span class="gallery-ornament tr">❁</span>
                     <span class="gallery-ornament bl">❁</span>
                     <span class="gallery-ornament br">❁</span>
                     <div class="gallery-image-wrapper">
-                        <img src="images/galeri6.jpg" alt="Galeri 6" onerror="this.style.display='none';">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="gallery-label">
-                        <i class="fas fa-hand-pointer"></i>
-                        Sentuh untuk Melihat
+                        <img src="6.jpg" alt="Galeri 6">
                     </div>
                 </div>
             </div>
@@ -4360,10 +3972,10 @@
                         </div>
 
                         <div class="atm-card-number">
-                            <span class="group"><span>5</span><span>2</span><span>3</span><span>4</span></span>
-                            <span class="group"><span>5</span><span>6</span><span>7</span><span>8</span></span>
-                            <span class="group"><span>9</span><span>0</span><span>1</span><span>2</span></span>
-                            <span class="group"><span>3</span><span>4</span><span>5</span><span>6</span></span>
+                            <span class="group"><span>5</span><span>5</span><span>2</span><span>4</span></span>
+                            <span class="group"><span>0</span><span>1</span><span>0</span><span>2</span></span>
+                            <span class="group"><span>4</span><span>8</span><span>4</span><span>0</span></span>
+                            <span class="group"><span>5</span><span>3</span><span>2</span>
                         </div>
 
                         <div class="atm-card-footer">
@@ -4378,7 +3990,7 @@
                         </div>
                     </div>
 
-                    <button class="copy-card-btn" onclick="copyAtmNumber('5234 5678 9012 3456', this)">
+                    <button class="copy-card-btn" onclick="copyAtmNumber('552401024840532', this)">
                         <i class="fas fa-copy"></i>
                         <span>Salin Nomor Rekening</span>
                     </button>
@@ -4408,10 +4020,9 @@
                         </div>
 
                         <div class="atm-card-number">
-                            <span class="group"><span>5</span><span>6</span><span>7</span><span>8</span></span>
-                            <span class="group"><span>1</span><span>2</span><span>3</span><span>4</span></span>
-                            <span class="group"><span>5</span><span>6</span><span>7</span><span>8</span></span>
-                            <span class="group"><span>9</span><span>0</span><span>1</span><span>2</span></span>
+                            <span class="group"><span>1</span><span>1</span><span>2</span><span>4</span></span>
+                            <span class="group"><span>8</span><span>2</span><span>5</span><span>4</span></span>
+                            <span class="group"><span>3</span><span>6</span>
                         </div>
 
                         <div class="atm-card-footer">
@@ -4426,7 +4037,7 @@
                         </div>
                     </div>
 
-                    <button class="copy-card-btn" onclick="copyAtmNumber('5678 1234 5678 9012', this)">
+                    <button class="copy-card-btn" onclick="copyAtmNumber('1124825436', this)">
                         <i class="fas fa-copy"></i>
                         <span>Salin Nomor Rekening</span>
                     </button>
@@ -4584,88 +4195,6 @@
             updateCountdown();
             setInterval(updateCountdown, 1000);
         }
-
-        // ============================================================
-        // LIGHTBOX GALERI
-        // ============================================================
-        const galleryImages = [
-            { src: '1.jpg', caption: 'Momen Indah Kami' },
-            { src: '2.jpg', caption: 'Kebersamaan Kami' },
-            { src: '3.jpg', caption: 'Kenangan Terindah' },
-            { src: '4.jpg', caption: 'Cinta Kami' },
-            { src: '5.jpg', caption: 'Kebahagiaan Kami' },
-            { src: '6.jpg', caption: 'Selamanya Bersama' }
-        ];
-
-        let currentImageIndex = 0;
-
-        function openLightbox(index) {
-            currentImageIndex = index - 1;
-            const lightbox = document.getElementById('lightbox');
-            updateLightboxImage();
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function updateLightboxImage() {
-            const img = document.getElementById('lightboxImage');
-            const current = document.getElementById('lightboxCurrent');
-            const total = document.getElementById('lightboxTotal');
-            const caption = document.getElementById('lightboxCaption');
-            
-            const imageData = galleryImages[currentImageIndex];
-            
-            img.style.opacity = '0';
-            setTimeout(() => {
-                img.src = imageData.src;
-                img.alt = imageData.caption;
-                img.onerror = function() {
-                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"%3E%3Crect fill="%23fdfbf5" width="800" height="600"/%3E%3Ctext x="400" y="280" text-anchor="middle" fill="%23d4af37" font-family="Playfair Display" font-size="32"%3EGaleri Foto%3C/text%3E%3Ctext x="400" y="330" text-anchor="middle" fill="%236b6b6b" font-family="Cormorant Garamond" font-size="20" font-style="italic"%3E' + imageData.caption + '%3C/text%3E%3C/svg%3E';
-                };
-                img.style.opacity = '1';
-            }, 150);
-            
-            current.textContent = currentImageIndex + 1;
-            total.textContent = galleryImages.length;
-            caption.textContent = imageData.caption;
-        }
-
-        function navigateLightbox(direction) {
-            currentImageIndex += direction;
-            
-            if (currentImageIndex < 0) {
-                currentImageIndex = galleryImages.length - 1;
-            } else if (currentImageIndex >= galleryImages.length) {
-                currentImageIndex = 0;
-            }
-            
-            updateLightboxImage();
-        }
-
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const lightbox = document.getElementById('lightbox');
-            if (lightbox.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft') {
-                    navigateLightbox(-1);
-                } else if (e.key === 'ArrowRight') {
-                    navigateLightbox(1);
-                }
-            }
-        });
 
         // ============================================================
         // EFEK SHOOTING STAR
@@ -5074,7 +4603,7 @@
         // KEYBOARD NAVIGATION
         // ============================================================
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' && !document.getElementById('lightbox').classList.contains('active')) {
+            if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 const sections = ['cover', 'profile', 'event', 'gallery', 'donation', 'wishes', 'closing'];
                 const currentScroll = window.scrollY + 100;
