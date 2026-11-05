@@ -1444,44 +1444,6 @@
             padding: 0 15px;
         }
 
-        /* ============ AYAT ============ */
-        .verse-container {
-            max-width: 700px;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 0 5px;
-        }
-
-        .verse-arabic {
-            font-family: 'Amiri', serif;
-            font-size: clamp(1rem, 4.5vw, 1.4rem);
-            color: var(--gold);
-            line-height: 2;
-            direction: rtl;
-            margin-bottom: 12px;
-            text-shadow: 0 1px 10px rgba(212, 175, 55, 0.2);
-            padding: 0 5px;
-        }
-
-        .verse-translation {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(0.85rem, 3.3vw, 1rem);
-            color: var(--text-soft);
-            font-style: italic;
-            line-height: 1.7;
-            margin-bottom: 8px;
-            padding: 0 10px;
-        }
-
-        .verse-source {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
-            color: var(--gold);
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
         .divider {
             display: flex;
             align-items: center;
@@ -1497,363 +1459,6 @@
         }
 
         .divider-icon { color: var(--gold); font-size: clamp(1rem, 3.5vw, 1.2rem); }
-
-        /* ============================================================
-           PROFILE SECTION
-           ============================================================ */
-        .profile-section {
-            background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-section::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150vmax;
-            height: 150vmax;
-            transform: translate(-50%, -50%);
-            background: 
-                radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 30%),
-                conic-gradient(from 0deg, transparent 0deg, rgba(212, 175, 55, 0.03) 15deg, transparent 30deg,
-                    transparent 90deg, rgba(212, 175, 55, 0.03) 105deg, transparent 120deg,
-                    transparent 180deg, rgba(212, 175, 55, 0.03) 195deg, transparent 210deg,
-                    transparent 270deg, rgba(212, 175, 55, 0.03) 285deg, transparent 300deg, transparent 360deg);
-            animation: profileBgRotate 90s linear infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes profileBgRotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .profile-section::after {
-            content: '❁';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 40vmin;
-            color: rgba(212, 175, 55, 0.03);
-            animation: profileFlowerRotate 120s linear infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes profileFlowerRotate {
-            from { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.1); }
-            to { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
-        }
-
-        .profile-section > * { position: relative; z-index: 2; }
-
-        .profile-section .section-title {
-            font-size: clamp(2rem, 9vw, 3.5rem);
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 25%, var(--dark-gold) 50%, var(--light-gold) 75%, var(--gold) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: titleGoldShimmer 4s linear infinite;
-            filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.4));
-        }
-
-        @keyframes titleGoldShimmer {
-            to { background-position: 200% center; }
-        }
-
-        .profile-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: stretch;
-            gap: 30px;
-            max-width: 1100px;
-            width: 100%;
-            position: relative;
-        }
-
-        .profile-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fdfbf5 50%, #ffffff 100%);
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            border-radius: 25px;
-            padding: clamp(30px, 6vw, 45px) clamp(20px, 5vw, 30px) clamp(25px, 5vw, 35px);
-            text-align: center;
-            flex: 0 0 380px;
-            width: 380px;
-            min-width: 0;
-            max-width: 380px;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: auto;
-            box-sizing: border-box;
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--gold), var(--light-gold), var(--dark-gold), var(--light-gold), var(--gold));
-            background-size: 300% 300%;
-            border-radius: 27px;
-            z-index: -2;
-            animation: borderFlowProfile 4s linear infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes borderFlowProfile {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .profile-card:active,
-        .profile-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 70px rgba(212, 175, 55, 0.35);
-            border-color: var(--gold);
-        }
-
-        .profile-card .card-corner-ornament {
-            position: absolute;
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            color: var(--gold);
-            z-index: 3;
-            opacity: 0.7;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-            pointer-events: none;
-        }
-
-        .profile-card .card-corner-ornament.tl { top: 10px; left: 10px; transform: rotate(-45deg); }
-        .profile-card .card-corner-ornament.tr { top: 10px; right: 10px; transform: rotate(45deg); }
-        .profile-card .card-corner-ornament.bl { bottom: 10px; left: 10px; transform: rotate(-135deg); }
-        .profile-card .card-corner-ornament.br { bottom: 10px; right: 10px; transform: rotate(135deg); }
-
-        .profile-photo {
-            width: min(170px, 50vw);
-            height: min(200px, 60vw);
-            border-radius: 18px;
-            margin: 0 auto 22px;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, var(--cream), var(--white));
-            transition: all 0.6s ease;
-            flex-shrink: 0;
-        }
-
-        .profile-photo::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(244, 229, 161, 0.3), rgba(212, 175, 55, 0.4));
-            z-index: -1;
-            filter: blur(6px);
-            opacity: 0.7;
-            transition: all 0.6s ease;
-        }
-
-        .profile-photo::after {
-            content: '';
-            position: absolute;
-            top: -11px;
-            left: -11px;
-            right: -11px;
-            bottom: -11px;
-            border-radius: 26px;
-            border: 1.5px solid rgba(212, 175, 55, 0.35);
-            z-index: -1;
-            opacity: 0.6;
-            transition: all 0.6s ease;
-        }
-
-        .profile-card:active .profile-photo::before,
-        .profile-card:hover .profile-photo::before {
-            filter: blur(12px);
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .profile-card:active .profile-photo::after,
-        .profile-card:hover .profile-photo::after {
-            border-color: var(--gold);
-            opacity: 1;
-            transform: scale(1.03);
-        }
-
-        .profile-photo-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-            position: relative;
-            z-index: 2;
-            background: linear-gradient(135deg, var(--cream), var(--white));
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), 0 0 0 3px var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-photo-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 18px;
-            pointer-events: none;
-            -webkit-user-drag: none;
-            user-select: none;
-        }
-
-        .profile-photo-ornament {
-            position: absolute;
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-            color: var(--gold);
-            z-index: 5;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-            animation: ornamentFloat 3s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .profile-photo-ornament.tl { top: -14px; left: -14px; transform: rotate(-45deg); --rotate: -45deg; }
-        .profile-photo-ornament.tr { top: -14px; right: -14px; transform: rotate(45deg); animation-delay: 0.5s; --rotate: 45deg; }
-        .profile-photo-ornament.bl { bottom: -14px; left: -14px; transform: rotate(-135deg); animation-delay: 1s; --rotate: -135deg; }
-        .profile-photo-ornament.br { bottom: -14px; right: -14px; transform: rotate(135deg); animation-delay: 1.5s; --rotate: 135deg; }
-
-        @keyframes ornamentFloat {
-            0%, 100% { 
-                transform: translateY(0) rotate(var(--rotate, 0deg)); 
-                filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
-            }
-            50% { 
-                transform: translateY(-5px) rotate(var(--rotate, 0deg)); 
-                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 1));
-            }
-        }
-
-        .profile-name {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(1.8rem, 7vw, 2.6rem);
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 25%, var(--dark-gold) 50%, var(--light-gold) 75%, var(--gold) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: nameGoldShimmer 3s linear infinite;
-            filter: drop-shadow(0 2px 12px rgba(212, 175, 55, 0.4));
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            line-height: 1.1;
-        }
-
-        @keyframes nameGoldShimmer {
-            to { background-position: 200% center; }
-        }
-
-        .profile-name-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 8px 0 12px;
-            opacity: 0.8;
-            width: 100%;
-            flex-shrink: 0;
-        }
-
-        .profile-name-line .mini-line {
-            width: 25px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-        }
-
-        .profile-name-line .mini-flower { color: var(--gold); font-size: 0.65rem; }
-
-        .profile-desc {
-            color: var(--text-soft);
-            font-size: clamp(0.85rem, 3.3vw, 1rem);
-            line-height: 1.9;
-            position: relative;
-            z-index: 1;
-            font-family: 'Cormorant Garamond', serif;
-            min-height: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-            flex: 1;
-        }
-
-        .profile-desc strong { color: var(--text-dark); font-weight: 600; }
-
-        .love-icon {
-            font-size: clamp(2rem, 8vw, 3rem);
-            color: #e74c3c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: heartbeat 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(231, 76, 60, 0.6));
-            z-index: 3;
-            flex-shrink: 0;
-            align-self: center;
-        }
-
-        .love-icon::before,
-        .love-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 50px;
-            height: 50px;
-            border: 2px solid rgba(231, 76, 60, 0.6);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: heartPulse 2s ease-out infinite;
-        }
-
-        .love-icon::after { animation-delay: 1s; }
-
-        @keyframes heartPulse {
-            0% { width: 50px; height: 50px; opacity: 1; }
-            100% { width: 110px; height: 110px; opacity: 0; }
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            15% { transform: scale(1.25); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.15); }
-            60% { transform: scale(1); }
-        }
-
-        .love-icon i { position: relative; z-index: 2; }
 
         /* ============ EVENT SECTION ============ */
         .event-cards {
@@ -1972,150 +1577,8 @@
         }
 
         /* ============================================================
-           GALLERY SECTION
+           DONATION SECTION - KARTU BANK SANGAT KECIL
            ============================================================ */
-        .gallery-section {
-            background: linear-gradient(135deg, #fdfbf5 0%, #f8f4e8 50%, #fdfbf5 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 30%);
-            pointer-events: none;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: clamp(15px, 3vw, 25px);
-            max-width: 800px;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-            padding: 0 5px;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            border-radius: 8px;
-            overflow: visible;
-            position: relative;
-            cursor: default;
-            background: var(--white);
-            padding: 8px;
-            transition: all 0.5s ease;
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25), 0 0 0 1px rgba(212, 175, 55, 0.3) inset;
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 25%, var(--dark-gold) 50%, var(--light-gold) 75%, var(--gold) 100%);
-            background-size: 200% 200%;
-            z-index: -2;
-            animation: frameShine 5s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3);
-        }
-
-        @keyframes frameShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            border: 1.5px solid var(--gold);
-            border-radius: 6px;
-            z-index: 4;
-            pointer-events: none;
-            opacity: 0.8;
-            transition: opacity 0.4s;
-        }
-
-        .gallery-item:active::after,
-        .gallery-item:hover::after {
-            opacity: 1;
-            border-color: var(--dark-gold);
-        }
-
-        .gallery-item:active,
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.4), 0 0 0 1px var(--gold) inset;
-        }
-
-        .gallery-image-wrapper {
-            width: 100%;
-            height: 100%;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, var(--cream), var(--soft-gold));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .gallery-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-            -webkit-user-drag: none;
-            user-select: none;
-            transition: transform 0.8s ease;
-        }
-
-        .gallery-item:active .gallery-image-wrapper img,
-        .gallery-item:hover .gallery-image-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .gallery-ornament {
-            position: absolute;
-            font-size: clamp(0.8rem, 3vw, 1.1rem);
-            color: var(--gold);
-            z-index: 5;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.9), 0 0 20px rgba(212, 175, 55, 0.5);
-            pointer-events: none;
-            background: var(--cream);
-            padding: 2px;
-            line-height: 1;
-            transition: all 0.5s;
-        }
-
-        .gallery-ornament.tl { top: -10px; left: -10px; transform: rotate(-45deg); }
-        .gallery-ornament.tr { top: -10px; right: -10px; transform: rotate(45deg); }
-        .gallery-ornament.bl { bottom: -10px; left: -10px; transform: rotate(-135deg); }
-        .gallery-ornament.br { bottom: -10px; right: -10px; transform: rotate(135deg); }
-
-        .gallery-item:active .gallery-ornament,
-        .gallery-item:hover .gallery-ornament {
-            font-size: 1.3rem;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 1), 0 0 30px rgba(212, 175, 55, 0.7);
-        }
-
-        /* ============ DONATION SECTION ============ */
         .donation-section {
             background: linear-gradient(135deg, #f8f4e8 0%, #fdfbf5 50%, #f8f4e8 100%);
         }
@@ -2124,26 +1587,26 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            max-width: 900px;
+            gap: 20px;
+            max-width: 500px;
             width: 100%;
             margin-top: 15px;
         }
 
         .atm-card-wrapper {
             width: 100%;
-            max-width: 400px;
+            max-width: 220px;
         }
 
         .atm-card {
             position: relative;
             width: 100%;
             aspect-ratio: 1.586 / 1;
-            border-radius: 16px;
-            padding: clamp(16px, 4vw, 22px) clamp(18px, 4.5vw, 25px);
+            border-radius: 8px;
+            padding: 8px 10px;
             color: white;
             transition: all 0.5s ease;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
             overflow: hidden;
             font-family: 'Roboto Mono', monospace;
         }
@@ -2164,53 +1627,53 @@
 
         .atm-card:active,
         .atm-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-3px) scale(1.01);
         }
 
         .atm-card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
             position: relative;
             z-index: 2;
         }
 
-        .bank-logo { display: flex; flex-direction: column; gap: 2px; }
+        .bank-logo { display: flex; flex-direction: column; gap: 0; }
 
         .bank-logo-text {
             font-family: 'Roboto Mono', monospace;
-            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            font-size: 0.75rem;
             font-weight: 700;
             color: white;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             line-height: 1;
         }
 
         .bank-logo-tagline {
             font-family: 'Roboto Mono', monospace;
-            font-size: clamp(0.45rem, 1.8vw, 0.55rem);
+            font-size: 0.32rem;
             color: rgba(255, 255, 255, 0.9);
-            letter-spacing: 1px;
-            margin-top: 2px;
+            letter-spacing: 0.3px;
+            margin-top: 1px;
         }
 
         .card-network-logo {
-            width: clamp(40px, 12vw, 50px);
+            width: 22px;
             height: auto;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
         }
 
         .card-chip {
             position: absolute;
-            top: clamp(35px, 10vw, 45px);
-            left: clamp(15px, 4vw, 22px);
-            width: clamp(35px, 10vw, 42px);
-            height: clamp(26px, 7.5vw, 32px);
+            top: 20px;
+            left: 10px;
+            width: 20px;
+            height: 16px;
             background: linear-gradient(135deg, #f4d97e 0%, #d4af37 50%, #b8941f 100%);
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
             z-index: 3;
             overflow: hidden;
         }
@@ -2233,33 +1696,33 @@
             width: 100%;
             height: 1px;
             background: rgba(0, 0, 0, 0.25);
-            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
         }
 
         .atm-card-number {
             position: absolute;
-            top: clamp(70px, 20vw, 88px);
-            left: clamp(15px, 4vw, 22px);
-            right: clamp(15px, 4vw, 22px);
+            top: 42px;
+            left: 10px;
+            right: 10px;
             display: flex;
-            gap: clamp(6px, 2vw, 10px);
+            gap: 3px;
             font-family: 'Roboto Mono', monospace;
-            font-size: clamp(0.7rem, 2.8vw, 0.9rem);
+            font-size: 0.42rem;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.2px;
             color: white;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
             z-index: 2;
             justify-content: space-between;
         }
 
-        .atm-card-number .group { display: flex; gap: 1px; }
+        .atm-card-number .group { display: flex; gap: 0.5px; }
 
         .atm-card-footer {
             position: absolute;
-            bottom: clamp(12px, 3.5vw, 18px);
-            left: clamp(15px, 4vw, 22px);
-            right: clamp(15px, 4vw, 22px);
+            bottom: 7px;
+            left: 10px;
+            right: 10px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -2269,37 +1732,37 @@
         .card-holder, .card-expiry {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 0;
         }
 
         .card-expiry { align-items: flex-end; }
 
         .card-holder-label, .card-expiry-label {
-            font-size: clamp(0.4rem, 1.6vw, 0.5rem);
+            font-size: 0.25rem;
             color: rgba(255, 255, 255, 0.75);
-            letter-spacing: 1px;
+            letter-spacing: 0.3px;
             font-family: 'Roboto Mono', monospace;
         }
 
         .card-holder-name {
             font-family: 'Roboto Mono', monospace;
-            font-size: clamp(0.6rem, 2.4vw, 0.75rem);
+            font-size: 0.4rem;
             font-weight: 500;
             color: white;
-            letter-spacing: 1px;
+            letter-spacing: 0.3px;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 150px;
+            max-width: 80px;
         }
 
         .card-expiry-date {
             font-family: 'Roboto Mono', monospace;
-            font-size: clamp(0.6rem, 2.4vw, 0.75rem);
+            font-size: 0.4rem;
             font-weight: 500;
             color: white;
-            letter-spacing: 1px;
+            letter-spacing: 0.3px;
         }
 
         .atm-card-gloss {
@@ -2311,44 +1774,44 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 30%, transparent 70%, rgba(255, 255, 255, 0.05) 100%);
             pointer-events: none;
             z-index: 1;
-            border-radius: 16px;
+            border-radius: 8px;
         }
 
         .copy-card-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 5px;
             width: 100%;
-            margin-top: 15px;
-            padding: 14px 20px;
+            margin-top: 8px;
+            padding: 8px 12px;
             background: linear-gradient(135deg, var(--gold), var(--dark-gold));
             color: var(--white);
             border: none;
             border-radius: 50px;
             font-family: 'Playfair Display', serif;
-            font-size: clamp(0.8rem, 3.2vw, 0.95rem);
+            font-size: 0.65rem;
             font-weight: 600;
-            letter-spacing: 1.2px;
+            letter-spacing: 0.8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
         }
 
         .copy-card-btn:active,
         .copy-card-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.45);
         }
 
         .copy-card-btn.copied { background: linear-gradient(135deg, #4caf50, #388e3c); }
 
-        .copy-card-btn i { font-size: 0.95rem; }
+        .copy-card-btn i { font-size: 0.7rem; }
 
         .card-info {
             text-align: center;
-            margin-top: 10px;
-            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+            margin-top: 6px;
+            font-size: 0.62rem;
             color: var(--text-soft);
             font-style: italic;
             font-family: 'Cormorant Garamond', serif;
@@ -3135,101 +2598,16 @@
         .fade-in-right.visible { opacity: 1; transform: translateX(0); }
 
         /* ============ RESPONSIVE ============ */
-        @media (min-width: 769px) {
-            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .profile-cards {
-                flex-direction: column;
-                gap: 30px;
-                width: 100%;
-                align-items: center;
-            }
-            
-            .profile-card {
-                flex: 0 0 auto;
-                width: 100%;
-                max-width: 400px;
-                min-width: 0;
-                padding: 40px 22px 32px;
-            }
-            
-            .profile-photo {
-                width: min(150px, 45vw);
-                height: min(180px, 54vw);
-            }
-            
-            .profile-name {
-                font-size: clamp(1.6rem, 6.5vw, 2rem);
-                min-height: 50px;
-            }
-            
-            .profile-desc {
-                min-height: 90px;
-                font-size: 0.9rem;
-            }
-            
-            .love-icon {
-                font-size: 2.2rem;
-            }
-            
-            .love-icon::before,
-            .love-icon::after {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
         @media (max-width: 480px) {
-            .profile-card {
-                padding: 32px 18px 28px;
-                border-radius: 20px;
-                max-width: 100%;
-            }
-            
-            .profile-photo {
-                width: min(130px, 40vw);
-                height: min(155px, 48vw);
-                margin-bottom: 18px;
-            }
-            
-            .profile-name {
-                font-size: clamp(1.5rem, 6vw, 1.8rem);
-                min-height: 45px;
-                margin-bottom: 8px;
-            }
-            
-            .profile-desc {
-                min-height: 85px;
-                font-size: 0.85rem;
-                line-height: 1.8;
-            }
-            
-            .love-icon {
-                font-size: 2rem;
-            }
-            
-            .profile-name-line {
-                margin: 6px 0 10px;
-            }
-            
-            .attendance-options {
-                gap: 10px;
-            }
+            .attendance-options { gap: 10px; }
             
             .attendance-option label {
                 min-height: 90px;
                 padding: 12px 8px;
             }
             
-            .attendance-option label i {
-                font-size: 1.4rem;
-            }
-            
-            .attendance-option label span {
-                font-size: 0.7rem;
-            }
+            .attendance-option label i { font-size: 1.4rem; }
+            .attendance-option label span { font-size: 0.7rem; }
         }
 
         @media (max-width: 360px) {
@@ -3244,28 +2622,29 @@
             .nav-icons { padding: 6px 8px; gap: 3px; }
             .nav-icon { width: 32px; height: 32px; font-size: 0.75rem; }
             
-            .profile-card { padding: 28px 15px 24px; }
-            .profile-name { font-size: 1.4rem; min-height: 40px; }
-            .profile-desc { min-height: 80px; font-size: 0.8rem; }
-            
             .attendance-option label {
                 min-height: 80px;
                 padding: 10px 6px;
             }
             
-            .attendance-option label i {
-                font-size: 1.2rem;
-            }
+            .attendance-option label i { font-size: 1.2rem; }
+            .attendance-option label span { font-size: 0.65rem; }
+            .guest-count-btn { width: 38px; height: 38px; font-size: 1rem; }
             
-            .attendance-option label span {
-                font-size: 0.65rem;
-            }
-            
-            .guest-count-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
+            .atm-card-wrapper { max-width: 200px; }
+            .atm-card { padding: 7px 9px; border-radius: 7px; }
+            .bank-logo-text { font-size: 0.7rem; }
+            .bank-logo-tagline { font-size: 0.3rem; }
+            .card-chip { width: 18px; height: 14px; top: 18px; left: 9px; }
+            .atm-card-number { top: 38px; left: 9px; right: 9px; font-size: 0.38rem; }
+            .atm-card-footer { bottom: 6px; left: 9px; right: 9px; }
+            .card-holder-name { font-size: 0.35rem; max-width: 70px; }
+            .card-expiry-date { font-size: 0.35rem; }
+            .card-holder-label,
+            .card-expiry-label { font-size: 0.22rem; }
+            .card-network-logo { width: 20px; }
+            .copy-card-btn { font-size: 0.6rem; padding: 7px 10px; }
+            .card-info { font-size: 0.58rem; }
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
@@ -3396,14 +2775,8 @@
             <div class="nav-icon" onclick="scrollToSection('cover')" data-section="cover">
                 <i class="fas fa-home"></i>
             </div>
-            <div class="nav-icon" onclick="scrollToSection('profile')" data-section="profile">
-                <i class="fas fa-user"></i>
-            </div>
             <div class="nav-icon" onclick="scrollToSection('event')" data-section="event">
                 <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="nav-icon" onclick="scrollToSection('gallery')" data-section="gallery">
-                <i class="fas fa-images"></i>
             </div>
             <div class="nav-icon" onclick="scrollToSection('donation')" data-section="donation">
                 <i class="fas fa-gift"></i>
@@ -3437,7 +2810,7 @@
                     <span class="frame-decoration bottom-right">❁</span>
                     
                     <div class="couple-photo-inner">
-                        <img src="1.png" alt="Sumandiyah & Suheri" loading="lazy">
+                        <img src="https://picsum.photos/seed/couple/600/750.jpg" alt="Sumandiyah & Suheri" loading="lazy">
                     </div>
                 </div>
 
@@ -3447,7 +2820,7 @@
                 
                 <div class="cover-date-wrapper">
                     <div class="cover-date">
-                        <i class="fas fa-calendar-alt"></i> Minggu, 20 Desember 2026
+                        <i class="fas fa-calendar-alt"></i> Ahad, 20 Desember 2026
                     </div>
                     
                     <div class="countdown-label">Menuju Hari Bahagia</div>
@@ -3475,95 +2848,8 @@
                     </div>
                 </div>
             </div>
-            <div class="scroll-indicator" onclick="scrollToSection('profile')">
+            <div class="scroll-indicator" onclick="scrollToSection('event')">
                 <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
-
-        <!-- ============ PROFILE SECTION ============ -->
-        <section class="profile-section islamic-pattern" id="profile">
-            <h2 class="section-title fade-in">Mempelai</h2>
-            
-            <div class="verse-container fade-in">
-                <p class="verse-arabic">﴾ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴿</p>
-                <p class="verse-translation">
-                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
-                </p>
-                <p class="verse-source">— QS. Ar-Rum: 21 —</p>
-            </div>
-            
-            <div class="divider fade-in">
-                <div class="divider-line"></div>
-                <i class="fas fa-star divider-icon"></i>
-                <div class="divider-line"></div>
-            </div>
-
-            <div class="profile-cards">
-                <div class="profile-card fade-in-left">
-                    <span class="card-corner-ornament tl">❁</span>
-                    <span class="card-corner-ornament tr">❁</span>
-                    <span class="card-corner-ornament bl">❁</span>
-                    <span class="card-corner-ornament br">❁</span>
-
-                    <div class="profile-photo">
-                        <span class="profile-photo-ornament tl">❁</span>
-                        <span class="profile-photo-ornament tr">❁</span>
-                        <span class="profile-photo-ornament bl">❁</span>
-                        <span class="profile-photo-ornament br">❁</span>
-                        
-                        <div class="profile-photo-inner">
-                            <img src="3.jpeg" alt="Sumandiyah" loading="lazy">
-                        </div>
-                    </div>
-                    <h3 class="profile-name">Sumandiyah</h3>
-                    
-                    <div class="profile-name-line">
-                        <span class="mini-line"></span>
-                        <span class="mini-flower">❁</span>
-                        <span class="mini-line"></span>
-                    </div>
-                    
-                    <p class="profile-desc">
-                        Putri dari<br>
-                        <strong>Bapak Purwanto (Alhmarhum)</strong> & <strong>Ibu Erniyati</strong><br>
-                        <em>"Semoga Allah memberkahi pernikahan ini"</em>
-                    </p>
-                </div>
-
-                <div class="love-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-
-                <div class="profile-card fade-in-right">
-                    <span class="card-corner-ornament tl">❁</span>
-                    <span class="card-corner-ornament tr">❁</span>
-                    <span class="card-corner-ornament bl">❁</span>
-                    <span class="card-corner-ornament br">❁</span>
-
-                    <div class="profile-photo">
-                        <span class="profile-photo-ornament tl">❁</span>
-                        <span class="profile-photo-ornament tr">❁</span>
-                        <span class="profile-photo-ornament bl">❁</span>
-                        <span class="profile-photo-ornament br">❁</span>
-                        
-                        <div class="profile-photo-inner">
-                            <img src="2.jpeg" alt="Suheri" loading="lazy">
-                        </div>
-                    </div>
-                    <h3 class="profile-name">Suheri</h3>
-                    
-                    <div class="profile-name-line">
-                        <span class="mini-line"></span>
-                        <span class="mini-flower">❁</span>
-                        <span class="mini-line"></span>
-                    </div>
-                    
-                    <p class="profile-desc">
-                        Putra dari<br>
-                        <strong>Bapak Hamsar (Alhmarhum)</strong> & <strong>Ibu Sapurah</strong><br>
-                        <em>"Semoga Allah memberkahi pernikahan ini"</em>
-                    </p>
-                </div>
             </div>
         </section>
 
@@ -3585,17 +2871,17 @@
                     <h3 class="event-title">Akad Nikah</h3>
                     <div class="event-detail">
                         <div class="event-date">
-                            <i class="fas fa-calendar-alt"></i> Minggu, 20 Desember 2026
+                            <i class="fas fa-calendar-alt"></i> Ahad, 20 Desember 2026
                         </div>
                         <div class="event-time">
                             <i class="fas fa-clock"></i> 08.00 - 10.00 WIB
                         </div>
                         <div class="event-location">
                             <i class="fas fa-map-marker-alt"></i><br>
-                            Tempat Mempelai Wanita<br>
-                            Desa Sari Makmur, SP 6, Jalur 9, Pangkalan Lesung, Pelalawan, Riau
+                            Masjid Al-Ikhlas<br>
+                            Jl. Raya Utama No. 123, Jakarta
                         </div>
-                        <a href="https://maps.app.goo.gl/pP7JvrBq9ATHzbCPA" 
+                        <a href="https://www.google.com/maps/search/?api=1&query=Masjid+Al-Ikhlas+Jakarta" 
                            class="map-btn" 
                            target="_blank" 
                            rel="noopener noreferrer">
@@ -3611,95 +2897,22 @@
                     <h3 class="event-title">Resepsi</h3>
                     <div class="event-detail">
                         <div class="event-date">
-                            <i class="fas fa-calendar-alt"></i> Minggu, 20 Desember 2026
+                            <i class="fas fa-calendar-alt"></i> Ahad, 20 Desember 2026
                         </div>
                         <div class="event-time">
-                            <i class="fas fa-clock"></i> 10.00 - Selesai WIB
+                            <i class="fas fa-clock"></i> 11.00 - 14.00 WIB
                         </div>
                         <div class="event-location">
                             <i class="fas fa-map-marker-alt"></i><br>
-                            Tempat Mempelai Wanita<br>
-                            Desa Sari Makmur, SP 6, Jalur 9, Pangkalan Lesung, Pelalawan, Riau
+                            Gedung Serbaguna Al-Barokah<br>
+                            Jl. Raya Utama No. 125, Jakarta
                         </div>
-                        <a href="https://maps.app.goo.gl/pP7JvrBq9ATHzbCPA" 
+                        <a href="https://www.google.com/maps/search/?api=1&query=Gedung+Serbaguna+Al-Barokah+Jakarta" 
                            class="map-btn" 
                            target="_blank" 
                            rel="noopener noreferrer">
                             <i class="fas fa-map"></i> Lihat Lokasi
                         </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ GALLERY SECTION ============ -->
-        <section class="gallery-section islamic-pattern" id="gallery">
-            <h2 class="section-title fade-in">Galeri</h2>
-            <p class="section-subtitle fade-in">Momen indah kami</p>
-            <div class="divider fade-in">
-                <div class="divider-line"></div>
-                <i class="fas fa-camera divider-icon"></i>
-                <div class="divider-line"></div>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item fade-in">
-                    <span class="gallery-ornament tl">❁</span>
-                    <span class="gallery-ornament tr">❁</span>
-                    <span class="gallery-ornament bl">❁</span>
-                    <span class="gallery-ornament br">❁</span>
-                    <div class="gallery-image-wrapper">
-                        <img src="4.jpg" alt="Galeri 1" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <span class="gallery-ornament tl">❁</span>
-                    <span class="gallery-ornament tr">❁</span>
-                    <span class="gallery-ornament bl">❁</span>
-                    <span class="gallery-ornament br">❁</span>
-                    <div class="gallery-image-wrapper">
-                        <img src="5.jpg" alt="Galeri 2" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <span class="gallery-ornament tl">❁</span>
-                    <span class="gallery-ornament tr">❁</span>
-                    <span class="gallery-ornament bl">❁</span>
-                    <span class="gallery-ornament br">❁</span>
-                    <div class="gallery-image-wrapper">
-                        <img src="6.jpg" alt="Galeri 3" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <span class="gallery-ornament tl">❁</span>
-                    <span class="gallery-ornament tr">❁</span>
-                    <span class="gallery-ornament bl">❁</span>
-                    <span class="gallery-ornament br">❁</span>
-                    <div class="gallery-image-wrapper">
-                        <img src="IMG-20260718-WA0019.jpg" alt="Galeri 4" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <span class="gallery-ornament tl">❁</span>
-                    <span class="gallery-ornament tr">❁</span>
-                    <span class="gallery-ornament bl">❁</span>
-                    <span class="gallery-ornament br">❁</span>
-                    <div class="gallery-image-wrapper">
-                        <img src="7.jpeg" alt="Galeri 5" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <span class="gallery-ornament tl">❁</span>
-                    <span class="gallery-ornament tr">❁</span>
-                    <span class="gallery-ornament bl">❁</span>
-                    <span class="gallery-ornament br">❁</span>
-                    <div class="gallery-image-wrapper">
-                        <img src="8.jpeg" alt="Galeri 6" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -3715,7 +2928,7 @@
                 <div class="divider-line"></div>
             </div>
 
-            <p class="fade-in" style="color: var(--text-soft); margin-bottom: 25px; font-size: clamp(0.85rem, 3.3vw, 1rem); line-height: 1.8; text-align: center; max-width: 600px; padding: 0 10px;">
+            <p class="fade-in" style="color: var(--text-soft); margin-bottom: 20px; font-size: clamp(0.8rem, 3vw, 0.95rem); line-height: 1.8; text-align: center; max-width: 600px; padding: 0 10px;">
                 Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih, dapat mengirimkan melalui:
             </p>
 
@@ -3741,10 +2954,10 @@
                         </div>
 
                         <div class="atm-card-number">
-                            <span class="group"><span>5</span><span>5</span><span>2</span><span>4</span></span>
-                            <span class="group"><span>0</span><span>1</span><span>0</span><span>2</span></span>
-                            <span class="group"><span>4</span><span>8</span><span>4</span><span>0</span></span>
-                            <span class="group"><span>5</span><span>3</span><span>2</span>
+                            <span class="group"><span>5</span><span>2</span><span>3</span><span>4</span></span>
+                            <span class="group"><span>5</span><span>6</span><span>7</span><span>8</span></span>
+                            <span class="group"><span>9</span><span>0</span><span>1</span><span>2</span></span>
+                            <span class="group"><span>3</span><span>4</span><span>5</span><span>6</span></span>
                         </div>
 
                         <div class="atm-card-footer">
@@ -3759,7 +2972,7 @@
                         </div>
                     </div>
 
-                    <button class="copy-card-btn" onclick="copyAtmNumber('552 401 024 840 532', this)">
+                    <button class="copy-card-btn" onclick="copyAtmNumber('5234 5678 9012 3456', this)">
                         <i class="fas fa-copy"></i>
                         <span>Salin Nomor Rekening</span>
                     </button>
@@ -3789,9 +3002,10 @@
                         </div>
 
                         <div class="atm-card-number">
-                            <span class="group"><span>1</span><span>1</span><span>2</span><span>4</span></span>
-                            <span class="group"><span>8</span><span>2</span><span>5</span><span>4</span></span>
-                            <span class="group"><span>3</span><span>6</span>
+                            <span class="group"><span>5</span><span>6</span><span>7</span><span>8</span></span>
+                            <span class="group"><span>1</span><span>2</span><span>3</span><span>4</span></span>
+                            <span class="group"><span>5</span><span>6</span><span>7</span><span>8</span></span>
+                            <span class="group"><span>9</span><span>0</span><span>1</span><span>2</span></span>
                         </div>
 
                         <div class="atm-card-footer">
@@ -3806,7 +3020,7 @@
                         </div>
                     </div>
 
-                    <button class="copy-card-btn" onclick="copyAtmNumber('112 482 5436', this)">
+                    <button class="copy-card-btn" onclick="copyAtmNumber('5678 1234 5678 9012', this)">
                         <i class="fas fa-copy"></i>
                         <span>Salin Nomor Rekening</span>
                     </button>
@@ -3966,7 +3180,7 @@
 
     <!-- ============ AUDIO ============ -->
     <audio id="bgMusic" loop preload="none">
-        <source src="Music Background.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <!-- ============================================================
@@ -3990,28 +3204,20 @@
         // Dapatkan dari: Firebase Console → Project Settings → Web App
         // ============================================================
         const firebaseConfig = {
-  apiKey: "AIzaSyDTBe7XJRcnT3RLsaBjNb9-bdSLLFtIdeA",
-  authDomain: "undangan-pernikahan-digi-b7100.firebaseapp.com",
-  databaseURL: "https://undangan-pernikahan-digi-b7100-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "undangan-pernikahan-digi-b7100",
-  storageBucket: "undangan-pernikahan-digi-b7100.firebasestorage.app",
-  messagingSenderId: "291420414595",
-  appId: "1:291420414595:web:3e5d799f918ba35101f1b6",
-  measurementId: "G-JBP1DXDWV2"
-};
+            apiKey: "AIzaSyDEMO_GANTI_DENGAN_API_KEY_ANDA",
+            authDomain: "undangan-pernikahan-anda.firebaseapp.com",
+            projectId: "undangan-pernikahan-anda",
+            storageBucket: "undangan-pernikahan-anda.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
 
-        // Inisialisasi Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Simpan ke window agar bisa diakses dari script utama
         window.db = db;
         window.firestoreFns = { collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp };
-        
-        // Set flag bahwa Firebase sudah siap
         window.firebaseReady = true;
-        
-        // Dispatch event agar script utama tahu Firebase sudah siap
         window.dispatchEvent(new Event('firebaseReady'));
     </script>
 
@@ -4019,9 +3225,6 @@
          SCRIPT UTAMA
          ============================================================ -->
     <script>
-        // ============================================================
-        // SISTEM NAMA TAMU DARI URL
-        // ============================================================
         function getGuestData() {
             const urlParams = new URLSearchParams(window.location.search);
             const to = urlParams.get('to');
@@ -4059,9 +3262,6 @@
             }
         }
 
-        // ============================================================
-        // COUNTDOWN TIMER
-        // ============================================================
         function initCountdown() {
             const targetDate = new Date('2026-12-20T08:00:00+07:00').getTime();
             
@@ -4135,17 +3335,9 @@
             const attendance = document.querySelector('input[name="attendance"]:checked');
             const message = document.getElementById('rsvpMessage').value.trim();
 
-            if (!name) {
-                showToast('Mohon isi nama Anda');
-                return;
-            }
+            if (!name) { showToast('Mohon isi nama Anda'); return; }
+            if (!attendance) { showToast('Mohon pilih konfirmasi kehadiran'); return; }
 
-            if (!attendance) {
-                showToast('Mohon pilih konfirmasi kehadiran');
-                return;
-            }
-
-            // Cek Firebase siap
             if (!window.firebaseReady || !window.db) {
                 showToast('Koneksi sedang dimuat. Coba lagi sebentar.');
                 return;
@@ -4163,7 +3355,6 @@
             try {
                 const { collection, addDoc, serverTimestamp } = window.firestoreFns;
                 
-                // Simpan ke Firestore
                 await addDoc(collection(window.db, "rsvp"), {
                     name: name,
                     attendance: attendanceValue,
@@ -4173,7 +3364,6 @@
                     createdAt: new Date().toISOString()
                 });
 
-                // Tampilkan success
                 const form = document.getElementById('rsvpForm');
                 const success = document.getElementById('rsvpSuccess');
                 const successDetail = document.getElementById('rsvpSuccessDetail');
@@ -4242,7 +3432,6 @@
             const list = document.getElementById('wishesList');
             if (!list) return;
 
-            // Tampilkan loading
             list.innerHTML = `
                 <div class="loading-wishes">
                     <i class="fas fa-spinner"></i>
@@ -4250,18 +3439,16 @@
                 </div>
             `;
 
-            // Tunggu Firebase siap
             if (!window.firebaseReady || !window.db) {
                 await new Promise(resolve => {
                     window.addEventListener('firebaseReady', resolve, { once: true });
-                    setTimeout(resolve, 5000); // Timeout 5 detik
+                    setTimeout(resolve, 5000);
                 });
             }
 
             try {
                 const { collection, getDocs, query, orderBy, limit } = window.firestoreFns;
                 
-                // Query: urutkan dari terbaru, max 50
                 const q = query(
                     collection(window.db, "wishes"),
                     orderBy("timestamp", "desc"),
@@ -4345,7 +3532,6 @@
             if (!name) { showToast('Mohon isi nama Anda'); return; }
             if (!message) { showToast('Mohon isi ucapan Anda'); return; }
 
-            // Cek Firebase siap
             if (!window.firebaseReady || !window.db) {
                 showToast('Koneksi sedang dimuat. Coba lagi sebentar.');
                 return;
@@ -4366,10 +3552,8 @@
                     createdAt: new Date().toISOString()
                 });
 
-                // Reload daftar ucapan
                 await loadWishesFromFirebase();
 
-                // Reset form
                 const guest = getGuestData();
                 document.getElementById('wishName').value = guest.name || '';
                 document.getElementById('wishMessage').value = '';
@@ -4424,9 +3608,6 @@
             }, 1000);
         }
 
-        // ============================================================
-        // GATE PETALS & SPARKLES
-        // ============================================================
         function createGatePetals() {
             const gate = document.getElementById('gate');
             if (!gate) return;
@@ -4459,9 +3640,6 @@
             }
         }
 
-        // ============================================================
-        // CONFETTI FLOWERS
-        // ============================================================
         function createConfettiFlowers() {
             const flowers = ['❁', '✿', '❀', '✾', '❋', '✿', '❁', '✧', '✦'];
             const colors = ['#d4af37', '#b8941f', '#f4e5a1', '#e8d9a0', '#c9a227', '#ffd700'];
@@ -4485,9 +3663,6 @@
             }
         }
 
-        // ============================================================
-        // PARTICLES
-        // ============================================================
         function createParticles() {
             const colors = ['#d4af37', '#b8941f', '#f4e5a1', '#e8d9a0'];
             const shapes = ['✦', '❁', '✧', '❋', '✿', '★'];
@@ -4507,9 +3682,6 @@
             }
         }
 
-        // ============================================================
-        // ANTI TAMPER PROTECTION
-        // ============================================================
         document.addEventListener('contextmenu', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
             e.preventDefault();
@@ -4523,9 +3695,6 @@
             }
         });
 
-        // ============================================================
-        // LOADING
-        // ============================================================
         window.addEventListener('load', () => {
             setupGuestName();
             createGatePetals();
@@ -4535,9 +3704,6 @@
             }, 2500);
         });
 
-        // ============================================================
-        // GATE OPENING
-        // ============================================================
         document.getElementById('openBtn').addEventListener('click', function() {
             const gate = document.getElementById('gate');
             const mainContent = document.getElementById('mainContent');
@@ -4565,16 +3731,13 @@
 
             setTimeout(() => {
                 initScrollAnimations();
-                loadWishesFromFirebase(); // ← Load dari Firebase
+                loadWishesFromFirebase();
                 createParticles();
                 startShootingStars();
                 initCountdown();
             }, 2500);
         });
 
-        // ============================================================
-        // MUSIC CONTROL
-        // ============================================================
         const bgMusic = document.getElementById('bgMusic');
         let isPlaying = false;
 
@@ -4604,9 +3767,6 @@
             }
         }
 
-        // ============================================================
-        // NAVIGATION
-        // ============================================================
         function scrollToSection(id) {
             const section = document.getElementById(id);
             if (section) section.scrollIntoView({ behavior: 'smooth' });
@@ -4620,7 +3780,7 @@
         window.addEventListener('scroll', () => {
             if (scrollTimeout) return;
             scrollTimeout = setTimeout(() => {
-                const sections = ['cover', 'profile', 'event', 'gallery', 'donation', 'rsvp', 'wishes'];
+                const sections = ['cover', 'event', 'donation', 'rsvp', 'wishes'];
                 const scrollPos = window.scrollY + window.innerHeight / 3;
 
                 sections.forEach(id => {
@@ -4637,9 +3797,6 @@
             }, 100);
         }, { passive: true });
 
-        // ============================================================
-        // SCROLL ANIMATIONS
-        // ============================================================
         function initScrollAnimations() {
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
@@ -4664,9 +3821,6 @@
             }
         }
 
-        // ============================================================
-        // COPY NOMOR REKENING
-        // ============================================================
         function copyAtmNumber(number, btnElement) {
             const cleanNumber = number.replace(/\s/g, '');
             
@@ -4702,7 +3856,7 @@
         function showCopySuccess(btnElement) {
             const originalHTML = btnElement.innerHTML;
             btnElement.classList.add('copied');
-            btnElement.innerHTML = '<i class="fas fa-check"></i> <span>Nomor Berhasil Disalin!</span>';
+            btnElement.innerHTML = '<i class="fas fa-check"></i> <span>Tersalin!</span>';
             
             showToast('Nomor rekening berhasil disalin! ✓');
             
@@ -4712,9 +3866,6 @@
             }, 2500);
         }
 
-        // ============================================================
-        // TOAST
-        // ============================================================
         function showToast(message) {
             const toast = document.createElement('div');
             toast.style.cssText = `
@@ -4753,18 +3904,12 @@
             }, 2500);
         }
 
-        // ============================================================
-        // ESCAPE HTML
-        // ============================================================
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // ============================================================
-        // HANDLE ORIENTATION CHANGE
-        // ============================================================
         window.addEventListener('orientationchange', () => {
             setTimeout(() => {
                 window.scrollBy(0, 1);
