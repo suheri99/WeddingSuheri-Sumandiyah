@@ -2825,7 +2825,7 @@
                 
                 <div class="cover-date-wrapper">
                     <div class="cover-date">
-                        <i class="fas fa-calendar-alt"></i> Minggu, 20 Desember 2026
+                        <i class="fas fa-calendar-alt"></i> Minggu, 13 Desember 2026
                     </div>
                     
                     <div class="countdown-label">Menuju Hari Bahagia</div>
@@ -2876,7 +2876,7 @@
                     <h3 class="event-title">Akad Nikah</h3>
                     <div class="event-detail">
                         <div class="event-date">
-                            <i class="fas fa-calendar-alt"></i> Minggu, 20 Desember 2026
+                            <i class="fas fa-calendar-alt"></i> Minggu, 13 Desember 2026
                         </div>
                         <div class="event-time">
                             <i class="fas fa-clock"></i> 08.00 - 10.00 WIB
@@ -2902,7 +2902,7 @@
                     <h3 class="event-title">Resepsi</h3>
                     <div class="event-detail">
                         <div class="event-date">
-                            <i class="fas fa-calendar-alt"></i> Minggu, 20 Desember 2026
+                            <i class="fas fa-calendar-alt"></i> Minggu, 13 Desember 2026
                         </div>
                         <div class="event-time">
                             <i class="fas fa-clock"></i> 10.00 - Selesai WIB
@@ -3269,46 +3269,45 @@
         }
 
         function initCountdown() {
-            const targetDate = new Date('2026-12-20T08:00:00+07:00').getTime();
-            
-            const cdDays = document.getElementById('cdDays');
-            const cdHours = document.getElementById('cdHours');
-            const cdMinutes = document.getElementById('cdMinutes');
-            const cdSeconds = document.getElementById('cdSeconds');
-            
-            if (!cdDays) return;
-            
-            function padZero(num) {
-                return num < 10 ? '0' + num : num.toString();
-            }
-            
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                
-                if (distance < 0) {
-                    cdDays.textContent = '00';
-                    cdHours.textContent = '00';
-                    cdMinutes.textContent = '00';
-                    cdSeconds.textContent = '00';
-                    return;
-                }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                cdDays.textContent = padZero(days);
-                cdHours.textContent = padZero(hours);
-                cdMinutes.textContent = padZero(minutes);
-                cdSeconds.textContent = padZero(seconds);
-            }
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+    const targetDate = new Date('2026-12-13T08:00:00+07:00').getTime();
+    
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMinutes = document.getElementById('cdMinutes');
+    const cdSeconds = document.getElementById('cdSeconds');
+    
+    if (!cdDays) return;
+    
+    function padZero(num) {
+        return num < 10 ? '0' + num : num.toString();
+    }
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        
+        if (distance < 0) {
+            cdDays.textContent = '00';
+            cdHours.textContent = '00';
+            cdMinutes.textContent = '00';
+            cdSeconds.textContent = '00';
+            return;
         }
-
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        cdDays.textContent = padZero(days);
+        cdHours.textContent = padZero(hours);
+        cdMinutes.textContent = padZero(minutes);
+        cdSeconds.textContent = padZero(seconds);
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
         // ============================================================
         // RSVP - KONFIRMASI KEHADIRAN (FIREBASE)
         // ============================================================
